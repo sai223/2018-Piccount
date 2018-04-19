@@ -22,7 +22,7 @@ Git Manual
 > 1. __git add *__ 또는 **git add 파일명/폴더명** : add 대상을 stage area에 올린다.
 >> **git status** : 작업 도중에 현재까지 변경된 사항 등의 정보를 알 수 있다.
 > 2. **git commit -m "commit message"** : stage area에 있는 내용을 local repository에 올린다.
->> commit message naming 규칙 : YYYYMMDD-이름-설명 (예시: 20171122-이인태-README.md 수정)
+>> commit message naming 규칙 : 이름-설명 (예시: 20180419-이인태-README.md 수정)
 > 3. **git push origin master** : local repository에 있는 내용을 github repository에 올린다. 올리면 내용이 **덮어씌워**진다.
 > 4. 용량 때문에 node_modules 폴더를 제외하고 올리는 것이 좋다. add할 때 node_modules 폴더만 제외하거나, 혹은 아래의 방법을 이용.
 >> 1. local 폴더에서 **touch .gitignore** 실행하면 .gitignore라는 확장자가 없는 빈 파일이 생성된다.
