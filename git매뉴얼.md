@@ -1,4 +1,4 @@
-# 2017-Web-System-Design
+# 2018-SW-Capstone-Design
 Repository for Final Project
 
 Git Manual
