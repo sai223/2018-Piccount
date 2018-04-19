@@ -8,7 +8,7 @@ Git Manual
 > 1. local에서 폴더를 하나 정한다.
 > 2. 해당 폴더에서 git bash 실행
 > 3. git init
-> 4. git remote add origin https://github.com/sai223/2017-Web-System-Design
+> 4. git remote add origin https://github.com/sai223/2018-Piccount
 > 5. local 폴더의 .git 를 삭제하면 초기화된다.
 *****
 #### Git --> Local
