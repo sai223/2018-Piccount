@@ -9,38 +9,52 @@ var connection = mysql.createConnection({
 	database: 'piccount_server'
 });
 
-const logInSuccess = 1;
-const logInFail = 0;
+const logInSuccess = true;
+const logInFail = false;
 
-router.get('/logIn', function (req, res) {
+var userInfo = '';
+var userId;
+var userPassword;
 
-	connection.connect(function(err) {
-		if (err) throw err;
-		console.log('DB is not connected.');
+router.post('/logIn', function (req, res) {
+
+	req.on('data', function(data) {
+		userInfo = JSON.parse(data);
+
+		userId = userInfo.id;
+		userPassword = userInfo.password;
 	});
 
-	var userId = req.param('id');
-	var userPassword = req.param('password');
+	req.on('end', function() {
+		connection.connect(function(err) {
+			if (err) throw err;
+			console.log('DB is not connected.');
+		});
 
-	connection.query('SELECT userPw FROM user_info WHERE userId = ' + userId, function(err, result) {
-
-		if (err) throw err;
-
-		if (result == NULL) {
-
-			res.send(logInFail);
-			console.log('There is no such information!');
-
-		} else if(result == userPassword) {
-
-			res.send(logInSuccess);
-			console.log('logIn is completed!');
-
-		} else {
+		connection.query('SELECT userPw FROM user_info WHERE userId = ' + userId, function(err, result) {
+	
+			if (err) throw err;
 			
-			res.send(logInFail);
-			console.log('logIn is wrong information!');
-		}
+			var resJson = '';
 
+			if (result == NULL) {
+	
+				resJson = '{"success":"'+logInFail+'"}';
+				console.log('There is no such information!');
+	
+			} else if(result == userPassword) {
+
+				resJson = '{"success":"'+logInSuccess+'"}';	
+				console.log('logIn is completed!');
+	
+			} else {
+				
+				resJson = '{"success":"'+logInFail+'"}';
+				console.log('logIn is wrong information!');
+			}
+
+			res.send(resJson);
+	
+		});
 	});
 });
