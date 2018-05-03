@@ -11,41 +11,26 @@ router.post('/', function(req, res){
     else {
 
     }
-        
+    
     userAdapter.search(req.body.id, null, function(resultCode, rows) {
-        if (resultCode == dbResultCode.Fail) {
+        if (resultCode == "Fail") {
             res.json({ success: false });
         }
         else {
-            var user = new User(req.body.id, req.body.password, req.body.name, req.body.birthday,req.body.phoneNumber);
-            userAdapter.write(user, function (resultCode) {
-                if (resultCode == "Fail") {
-                    res.json({ success: false });
-                } else {
-                    res.json({ success: true });
-                }
-            });
+            if(rows.length > 0) {
+                res.json({sucess: false});
+            } else {
+                var user = new User(req.body.id, req.body.password, req.body.name, req.body.birthday,req.body.phoneNumber);
+                userAdapter.write(user, function (resultCode) {
+                    if (resultCode == "Fail") {
+                        res.json({ success: false });
+                    } else {
+                        res.json({ success: true });
+                    }
+                });
+            }
         }
     });
-});
-
-router.post('/dup-id', function(req, res){
-
-    if (req.body.userType == undefined || req.body.id == undefined) {
-        res.json({success: false});
-    }
-    else {
-        userAdapter.search(req.body.id, null, function(resultCode, rows){
-            if (resultCode == "Fail") {
-                res.json({success: false});
-            }
-            if (rows.length > 0) {
-                res.json({'success': false});
-            } else {
-                res.json({'success': true});
-            }
-        });
-    }
 });
 
 module.exports = router;
