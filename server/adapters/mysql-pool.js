@@ -8,7 +8,6 @@ try {
     pool = mysql.createPool(dbConfig);
 } catch (exception) {
     throw exception;
-    
 }
 
 module.exports = pool;

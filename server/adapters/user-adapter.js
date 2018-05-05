@@ -3,8 +3,8 @@ var pool = require('./mysql-pool');
 
 var adapter = {};
 
-var writeQuery = 'insert into user (id, password, name, birthday, phoneNumber) values(?,?,?,?,?);';
-var searchQuery = 'select * from user where id=?;';
+var writeQuery = 'insert into user_info (userId, userPw, userName, userBirth, userPhone) values(?,?,?,?,?);';
+var searchQuery = 'select * from user_info where userId=?;';
 
 adapter.write = function(user, cb) {
 
@@ -16,22 +16,19 @@ adapter.write = function(user, cb) {
         if (err) {
             console.log(err)
             resultCode = "Fail";
-            conn.release();
             cb(resultCode);
         } else {
-            conn.query(writeQuery, [user.id, user.password, user.name, user.birthday, user.phonNumber], function(err) {
+            conn.query(writeQuery, [user.id, user.password, user.name, user.birthday, user.phoneNumber], function(err) {
                 if (err) {
                     console.log(err)
                     resultCode = "Fail";
-                    conn.release();
                     cb(resultCode); 
                 } else { 
                     resultCode = "Ok";
-                    conn.release();
                     cb(resultCode)
-                    
                 }
             });
+            conn.release();
         }
     });
 }
