@@ -23,22 +23,18 @@ public class MainActivity extends AppCompatActivity {
 
         // 내역보기 탭 생성
         TabLayout.Tab firstTab = tabLayout.newTab();
-        firstTab.setText("내역보기");
         firstTab.setIcon(R.drawable.tab1_see_records);
 
         // 내역추가 탭 생성
         TabLayout.Tab secondTab = tabLayout.newTab();
-        secondTab.setText("내역추가");
         secondTab.setIcon(R.drawable.tab2_add_records);
 
         // 리포트 탭 생성
         TabLayout.Tab thirdTab = tabLayout.newTab();
-        thirdTab.setText("리포트");
         thirdTab.setIcon(R.drawable.tab3_report);
 
         // 환경설정 탭 생성
         TabLayout.Tab fourthTab = tabLayout.newTab();
-        fourthTab.setText("설정");
         fourthTab.setIcon(R.drawable.tab4_setting);
 
         // 생성한 각 탭을 레이아웃에 추가
