@@ -8,7 +8,7 @@ config.dbConfig = {
     user: 'root',
     //password: '1208',
     password:'',
-    database: 'Piccount',
+    database: 'piccount_server',
     debug: false
     
 }
