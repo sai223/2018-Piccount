@@ -1,14 +1,17 @@
 var config = {};
+var fs = require('fs');
+var path = require('path')
 
-config.dbConfig = {
+config.dbConfig = 
+{
     connectionLimit: 10,
-    //host: '13.125.192.162',
-    host: 'localhost',
+    host: 'piccount.cia0ntd0ooze.ap-northeast-2.rds.amazonaws.com',
+    //host: 'localhost',
     port: '3306',
     user: 'root',
-    //password: '1208',
-    password:'',
-    database: 'Piccount',
+    password: 'piccount1208',
+    //password:'',
+    database: 'piccount',
     debug: false
     
 }
