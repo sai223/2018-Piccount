@@ -24,10 +24,14 @@ router.post('/', function (req, res) {
 			if(resultCode == "Fail") {
 				res.json({success: false});
 			} else {
-				if(userPassword == rows[0].userPw){
-					res.json({success: true});
-				} else {
+				if(rows.length == 0) {
 					res.json({success: false});
+				} else {
+					if(userPassword == rows[0].userPw){
+						res.json({success: true});
+					} else {
+						res.json({success: false});
+					}
 				}
 			}
 		}

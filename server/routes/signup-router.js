@@ -18,7 +18,7 @@ router.post('/', function(req, res){
         }
         else {
             if(rows.length > 0) {
-                res.json({sucess: false});
+                res.json({success: false});
                 resultCode == "Fail"
             } else {
                 var user = new User(req.body.id, req.body.password, req.body.name, req.body.birthday,req.body.phoneNumber);
