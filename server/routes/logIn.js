@@ -9,11 +9,19 @@ const logInSuccess = 'true';
 const logInFail = 'false';
 
 var userInfo = '';
-var userId;
-var userPassword;
+var userId = '';
+var userPassword = '';
 
 router.post('/', function (req, res) {
+/*
+console.log("router.post was called.");
+userId = req.body.id;
+userPassword = req.body.password;
 
+console.log(userId + " / " + userPassword);
+
+return res.json({success : true});
+*/
 	if(req.body.id == undefined, req.body.password == undefined) {
 		return res.json({success : false});
 	} else {
@@ -37,3 +45,5 @@ router.post('/', function (req, res) {
 		});
 	}
 });
+
+module.exports = router;
