@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+
 public class FirstFragment extends Fragment {
     public FirstFragment(){
         // empty public constructor가 있어야 함.

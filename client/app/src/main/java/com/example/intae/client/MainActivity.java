@@ -8,14 +8,26 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.FrameLayout;
 
+// HTTP 쓰기 위한 import
+import android.content.SharedPreferences;
+import android.util.Log;
+import java.io.IOException;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
+
 public class MainActivity extends AppCompatActivity {
     FrameLayout frameLayout;
     TabLayout tabLayout;
+
+    HttpConnection httpConn = HttpConnection.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        sendData(); // 웹 서버로 데이터 전송
 
         // get the reference of FrameLayout and TabLayout
         frameLayout = (FrameLayout) findViewById(R.id.simpleFrameLayout);
@@ -81,4 +93,25 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void sendData(){
+        new Thread(){
+            public void run(){
+                httpConn.requestWebServer("intae", "123", callback);
+            }
+        }.start();
+    }
+
+    private final Callback callback = new Callback() {
+        @Override
+        public void onFailure(Call call, IOException e) {
+            Log.d("TEST", "실패: "+e.getMessage());
+        }
+
+        @Override
+        public void onResponse(Call call, Response response) throws IOException {
+            String body = response.body().string();
+            Log.d("TEST", "성공: " + body);
+        }
+    };
 }
