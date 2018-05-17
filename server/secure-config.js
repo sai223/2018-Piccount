@@ -9,7 +9,7 @@ config.dbConfig =
     //host: 'localhost',
     port: '3306',
     user: 'root',
-    password: 'piccount1208',
+    password: 'piccount2018',
     //password:'',
     database: 'piccount',
     debug: false
