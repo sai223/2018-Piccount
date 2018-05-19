@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<RelativeLayout
+    android:layout_height="match_parent"
+    android:layout_width="match_parent" xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditText android:layout_height="50dp"
+        android:layout_width="300dp"
+        android:layout_marginTop="151dp"
+        android:hint="ID"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/signupIDInput"/>
+    <EditText android:layout_height="50dp"
+        android:layout_width="300dp"
+        android:hint="Password"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/signupPasswordInput"
+        android:layout_below="@+id/signupIDInput"/>
+    <EditText
+        android:layout_height="50dp"
+        android:layout_width="300dp"
+        android:hint="Password Check"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/signupPasswordCheckInput"
+        android:layout_below="@+id/signupPasswordInput"/>
+
+    <Button
+        android:layout_height="55dp"
+        android:layout_width="150dp"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/signupDoneButton"
+        android:layout_below="@+id/signupPasswordCheckInput"
+        android:textAllCaps="true"
+        android:text="Sign Up"/>
+</RelativeLayout>

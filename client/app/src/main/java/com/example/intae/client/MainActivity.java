@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        sendData(); // 웹 서버로 데이터 전송
+        //sendData(); // 웹 서버로 데이터 전송
 
         // get the reference of FrameLayout and TabLayout
         frameLayout = (FrameLayout) findViewById(R.id.simpleFrameLayout);
