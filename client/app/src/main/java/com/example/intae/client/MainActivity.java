@@ -11,7 +11,11 @@ import android.widget.FrameLayout;
 // HTTP 쓰기 위한 import
 import android.content.SharedPreferences;
 import android.util.Log;
+import android.widget.TextView;
+
 import java.io.IOException;
+import java.util.Vector;
+
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
@@ -92,7 +96,72 @@ public class MainActivity extends AppCompatActivity {
                 // 딱히 기능 없음
             }
         });
-    }
+
+        {
+            FragmentManager fm = getSupportFragmentManager();
+            FragmentTransaction ft = fm.beginTransaction();
+            ft.replace(R.id.simpleFrameLayout, new FirstFragment());
+            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+            ft.commit();
+        }
+
+        /*
+        final DBHandler userDB = new DBHandler(getApplicationContext(), "User.db", null, 1);
+        final DBHandler expenseDB = new DBHandler(getApplicationContext(), "Expense.db", null, 1);
+        final DBHandler detail_expenseDB = new DBHandler(getApplicationContext(), "Detail_Expense.db", null, 1);
+        final DBHandler incomeDB = new DBHandler(getApplicationContext(), "Income.db", null, 1);
+
+        final EditText expense_data_store_name = (EditText) findViewById(R.id.store_name);
+        //EditText expense_data_upjong = (EditText) findViewById(R.id.upjong);
+        final EditText expense_data_date_year = (EditText) findViewById(R.id.date_year);
+        final EditText expense_data_date_month = (EditText) findViewById(R.id.date_month);
+        final EditText expense_data_date_day = (EditText) findViewById(R.id.date_day);
+        final EditText expense_data_total_price = (EditText) findViewById(R.id.total_price);
+        final TextView result = (TextView) findViewById(R.id.result);
+
+        // DB에 Expense 데이터 넣기
+        Button insert_expense = (Button) findViewById(R.id.commit);
+        insert_expense.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                String store_name = expense_data_store_name.getText().toString();
+                int date_year = Integer.parseInt(expense_data_date_year.getText().toString());
+                int date_month = Integer.parseInt(expense_data_date_month.getText().toString());
+                int date_day = Integer.parseInt(expense_data_date_day.getText().toString());
+                int total_price = Integer.parseInt(expense_data_total_price.getText().toString());
+
+                Data_Expense tmp = new Data_Expense(
+                        "temp_user_id",
+                        store_name,
+                        date_year,
+                        date_month,
+                        date_day,
+                        "temp_upjong",
+                        total_price
+                );
+
+                expenseDB.add_expense_data(tmp);
+
+                Vector<Data_Expense> tmptmp = expenseDB.get_expense_data(
+                        0, 0, 0,
+                        10000, 10000, 10000,
+                        "temp_user_id"
+                );
+
+                for(int i = 0;i < tmptmp.size();i++) {
+                    String ttt = tmptmp.elementAt(i).store_name + " "
+                            + tmptmp.elementAt(i).date_year + "년 "
+                            + tmptmp.elementAt(i).date_month + "월 "
+                            + tmptmp.elementAt(i).date_day + "일 "
+                            + tmptmp.elementAt(i).upjong + " "
+                            + tmptmp.elementAt(i).total_price;
+                    result.setText(ttt);
+                }
+            }
+        });
+        */
+
+    }// end of onCreate()
 
     private void sendData(){
         new Thread(){
