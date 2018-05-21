@@ -59,6 +59,58 @@ public class DBHandler extends SQLiteOpenHelper {
                 "money INTEGER)");
     }
 
+    public void clear_data(){
+        String query1 = "DELETE FROM USER;";
+        String query2 = "DELETE FROM EXPENSE;";
+        String query3 = "DELETE FROM DETAIL_EXPENSE;";
+        String query4 = "DELETE FROM INCOME;";
+
+        SQLiteDatabase db = getWritableDatabase();
+        db.execSQL(query1);
+        db.execSQL(query2);
+        db.execSQL(query3);
+        db.execSQL(query4);
+        db.close();
+    }
+
+    public void test_data(){
+        String query1 = "INSERT INTO EXPENSE VALUES(NULL,'" +
+                "temp_user_id" + "','" + "스타벅스" + "'," + 2000 + ","
+                + 1 + "," + 2 + ",'" + "카페" + "'," + 5000 + ");";
+        String query2 = "INSERT INTO EXPENSE VALUES(NULL,'" +
+                "temp_user_id" + "','" + "고씨네" + "'," + 2018 + ","
+                + 3 + "," + 3 + ",'" + "음식점" + "'," + 7000 + ");";
+        String query3 = "INSERT INTO EXPENSE VALUES(NULL,'" +
+                "temp_user_id" + "','" + "제일찌개백반" + "'," + 2007 + ","
+                + 2 + "," + 17 + ",'" + "음식점" + "'," + 6000 + ");";
+        String query4 = "INSERT INTO EXPENSE VALUES(NULL,'" +
+                "temp_user_id" + "','" + "드림디포" + "'," + 2011 + ","
+                + 12 + "," + 16 + ",'" + "잡화" + "'," + 1500 + ");";
+        String query5 = "INSERT INTO EXPENSE VALUES(NULL,'" +
+                "temp_user_id" + "','" + "꼬치핀다" + "'," + 2013 + ","
+                + 11 + "," + 31 + ",'" + "술집" + "'," + 25000 + ");";
+        String query6 = "INSERT INTO EXPENSE VALUES(NULL,'" +
+                "temp_user_id" + "','" + "아주대병원" + "'," + 2017 + ","
+                + 9 + "," + 5 + ",'" + "병원" + "'," + 100000 + ");";
+        String query7 = "INSERT INTO EXPENSE VALUES(NULL,'" +
+                "temp_user_id" + "','" + "스타벅스" + "'," + 1999 + ","
+                + 7 + "," + 21 + ",'" + "카페" + "'," + 4000 + ");";
+        String query8 = "INSERT INTO EXPENSE VALUES(NULL,'" +
+                "temp_user_id" + "','" + "스타벅스" + "'," + 2018 + ","
+                + 5 + "," + 11 + ",'" + "카페" + "'," + 12000 + ");";
+
+        SQLiteDatabase db = getWritableDatabase();
+        db.execSQL(query1);
+        db.execSQL(query2);
+        db.execSQL(query3);
+        db.execSQL(query4);
+        db.execSQL(query5);
+        db.execSQL(query6);
+        db.execSQL(query7);
+        db.execSQL(query8);
+        db.close();
+    }
+
     // DB 업그레이드를 위해 버전이 변경될 때 호출되는 함수
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){

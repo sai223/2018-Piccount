@@ -2,6 +2,7 @@ package com.example.intae.client;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -76,7 +77,7 @@ public class SecondFragment extends Fragment {
                             + tmptmp.elementAt(i).date_day + "일 "
                             + tmptmp.elementAt(i).upjong + " "
                             + tmptmp.elementAt(i).total_price;
-                    result.setText(ttt);
+                    result.append(ttt);
                 }
             }
         });

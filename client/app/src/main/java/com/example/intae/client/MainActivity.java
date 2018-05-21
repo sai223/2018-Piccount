@@ -59,6 +59,15 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.addTab(thirdTab);
         tabLayout.addTab(fourthTab);
 
+        /*
+        // 테스트용으로 데이터 추가
+        final DBHandler testDB = new DBHandler(
+                getApplicationContext(), "Expense.db", null, 1
+        );
+        testDB.test_data();
+        testDB.clear_data();
+        */
+
         // TabLayout의 각 탭을 누를 때 발생하는 Event 설정
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
