@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent" android:layout_height="match_parent">
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:id="@+id/id"
+        android:layout_centerHorizontal="true"
+        android:hint="ID"
+        android:layout_marginTop="50dp"/>
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:id="@+id/password"
+        android:layout_centerHorizontal="true"
+        android:hint="Password"
+        android:layout_below="@+id/id"/>
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:id="@+id/passwordCheck"
+        android:layout_centerHorizontal="true"
+        android:hint="Password Check"
+        android:layout_below="@+id/password"/>
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:id="@+id/name"
+        android:layout_centerHorizontal="true"
+        android:hint="name"
+        android:layout_below="@+id/passwordCheck"/>
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:id="@+id/birthday"
+        android:layout_centerHorizontal="true"
+        android:hint="Birthday"
+        android:layout_below="@+id/name"/>
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:id="@+id/phoneNumber"
+        android:layout_centerHorizontal="true"
+        android:hint="Phone number" android:layout_below="@+id/birthday"/>
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="55dp"
+        android:id="@+id/signupDoneButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/phoneNumber"
+        android:text="Sign Up"
+        android:textAllCaps="true"/>
+
+</RelativeLayout>
