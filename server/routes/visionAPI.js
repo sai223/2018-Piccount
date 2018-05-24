@@ -6,7 +6,9 @@ const client = new vision.ImageAnnotatorClient();
 
 router.post('/', function(req, res, next) {
   
+console.log(req.imgFile);
     if(req.imgFile == undefined){
+//	console.log('req.imgFile == undefined');
         return res.json({ success : false});  
     }
     else {
