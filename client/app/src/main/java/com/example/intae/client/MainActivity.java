@@ -21,6 +21,15 @@ import okhttp3.Callback;
 import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
+    /****************************************************
+     * 내역보기, 내역 추가하기, 리포트 보기, 설정 액티비티
+     * ListCheckActivity
+     * AddListActivity
+     * ReportCheckActivity
+     * SettingsActivity
+     * ************************************************/
+
+
     FrameLayout frameLayout;
     TabLayout tabLayout;
 

@@ -13,16 +13,23 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
-            android:label="PICCOUNT"/>
+            android:label="PICCOUNT" />
         <activity
             android:name=".LoginActivity"
             android:label="로그인">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SignupActivity" android:label="회원가입"/>
+        <activity
+            android:name=".SignupActivity"
+            android:label="회원가입" />
+        <activity android:name=".ListCheckActivity" />
+        <activity android:name=".AddListActivity" />
+        <activity android:name=".SettingsActivity" />
+        <activity android:name=".ReportCheckActivity"></activity>
     </application>
 
 </manifest>

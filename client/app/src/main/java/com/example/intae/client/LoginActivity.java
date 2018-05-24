@@ -44,7 +44,10 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //sendIDData();
-                loginFailureShow();
+                //loginFailureShow();
+                Intent intent = new Intent(getApplicationContext(),ListCheckActivity.class);
+                startActivity(intent);
+
             }
         });
         signupPageButton.setOnClickListener(new View.OnClickListener() {
