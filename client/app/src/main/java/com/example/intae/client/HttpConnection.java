@@ -29,21 +29,24 @@ public class HttpConnection {
                 .url("http://13.125.192.162:3000/logIn")
                 .post(body)
                 .build();
-
         client.newCall(request).enqueue(callback);
     }
+    public void requestSignupWebServer(String id, String password, String name, String birthday, String phoneNumber, Callback callback){
+        RequestBody body = new FormBody.Builder()
+                .add("id",id)
+                .add("password",password)
+                .add("name",name)
+                .add("birthday",birthday)
+                .add("phoneNumber",phoneNumber)
+                .build();
+
+        Request request = new Request.Builder()
+                .url("http://13.125.192.162:3000/signup-router")
+                .post(body)
+                .build();
+        client.newCall(request).enqueue(callback);
+    }
+    public OkHttpClient getClient(){
+        return this.client;
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
