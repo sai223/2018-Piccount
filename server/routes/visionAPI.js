@@ -18,18 +18,15 @@ router.post('/', function(req, res, next) {
             const detections = results[0].textAnnotations;
             console.log('Text:');
             detections.forEach(text => console.log(text));
-            /*
+            
             list = text[textAnnotations]
             
-            data = JSON.stringify(text)
-
-            */
-            return res.json({success:true, shop:shop na me, category:sorted category, date:date, item:item, price:price, totalPrice:price});
+            print(list)
+            
+            return res.json({success:true, shop:shopName, category:sortedCategory, date:date, item:item, price:price, totalPrice:price});
         })
         .catch(err => {
             console.error('ERROR:', err);
             return res.json({success:false});
         });  
 });
-
-module.exports = router;
