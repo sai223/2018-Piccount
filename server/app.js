@@ -15,6 +15,8 @@ var visionRouter = require('./routes/visionAPI');
 
 var app = express();
 
+//var urlencodedParser = bodyParser.urlencoded({ extended: false });
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -29,7 +31,7 @@ app.use(bodyParser.json());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/signup', signupRouter);
+app.use('/signUp', signupRouter);
 app.use('/doBackup', backupRouter);
 app.use('/makeBackup', mbackupRouter);
 app.use('/logIn', logInRouter);

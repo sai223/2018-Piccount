@@ -1,14 +1,19 @@
 const vision = require('@google-cloud/vision');
 var express = require('express');
 var router = express.Router();
+var bodyParser = require('body-parser');
 const client = new vision.ImageAnnotatorClient();
 //const fileName;
 
-router.post('/', function(req, res, next) {
+var urlParser = bodyParser.urlencoded({extended:true});
+
+router.post('/',urlParser,function(req, res, next) {
   
-console.log(req.imgFile);
-    if(req.imgFile == undefined){
-//	console.log('req.imgFile == undefined');
+//console.log(req.body);
+//console.log(req.files);
+
+    if(req.body.imgFile == undefined){
+	console.log('req.imgFile == undefined');
         return res.json({ success : false});  
     }
     else {
