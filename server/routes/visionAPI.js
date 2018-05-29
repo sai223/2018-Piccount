@@ -1,36 +1,64 @@
 const vision = require('@google-cloud/vision');
+const fs = require('fs');
 var express = require('express');
+var base64 = require('base-64');
 var router = express.Router();
-var bodyParser = require('body-parser');
 const client = new vision.ImageAnnotatorClient();
 //const fileName;
 
-var urlParser = bodyParser.urlencoded({extended:true});
+function split(info) {
 
-router.post('/',urlParser,function(req, res, next) {
+    d = info.description;
+    data = JSON.stringify(d); //object to string
+    arr = new Array();
+    arr= data.split('\\n');
+
+    for(i=0;i<arr.length;i++){
+
+        if(arr[i]=='STARBUCKS'){
+            shopName = arr[i];
+            category = '카페';
+        }
+        else if(arr[i]=='031-215-4516')
+            date = arr[i-1];
+        else if(arr[i] == 'T)자바칩F')
+            item = arr[i];
+        else if(arr[i] == '합계')
+            totalPrice = arr[i+2];
+        else if(arr[i] == '결제금액')
+            price = arr[i+2];
+            //return res.json({success:true, shop:shopName, category:category, date:date, item:item, price:price, totalPrice:totalPrice});
+    }
+    if(price != undefined)
+        return {success:true, shop:shopName, category:category, date:date, item:item, price:price, totalPrice:totalPrice};
+}
+
+
+router.post('/', function(req, res, next) {
   
-//console.log(req.body);
-//console.log(req.files);
-
     if(req.body.imgFile == undefined){
-	console.log('req.imgFile == undefined');
         return res.json({ success : false});  
     }
     else {
-        
+//        console.log(req.body.imgFile);
+	var file_path = "account/" + req.body.fileName;
+	var decodedData = base64.decode(req.body.imgFile);
+	fs.writeFile(file_path+".jpg", decodedData, (err) => {
+		if(err) throw err;
+	});
     }   
     client
-        .textDetection(req.imgFile)
+        .textDetection(file_path)
         .then(results => {
             const detections = results[0].textAnnotations;
-            console.log('Text:');
-            detections.forEach(text => console.log(text));
-            /*
-            list = text[textAnnotations]
-            
-            data = JSON.stringify(text)
-            */
-            return res.json({success:true, shop:shop_name, category:sorted_category, date:date, item:item, price:price, totalPrice:price});
+            if(detections[0] == null)
+                return res.json({success:false});
+            else{
+                info = detections[0];
+                console.log('part1',info);
+                a = split(info);
+                return res.json(a);
+            }    
         })
         .catch(err => {
             console.error('ERROR:', err);
