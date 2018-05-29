@@ -108,8 +108,9 @@ router.post('/', function (req, res, next) {
         fileName = req.body.fileName;
 	
 	var decodedData = base64.decode(req.body.imgFile);
+//	var bitmap = new Buffer(decodedData, 'base64');
 	
-	fs.writeFile(file_path+fileName, decodedData, (err) => {
+	fs.writeFile(file_path+fileName, decodedData, "binary", (err) => {
 		if(err) throw err;
 	});
 /*
