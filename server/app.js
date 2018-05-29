@@ -12,11 +12,9 @@ var usersRouter = require('./routes/users');
 var signupRouter = require('./routes/signup-router');
 var backupRouter = require('./routes/doBackUp');
 var mbackupRouter = require('./routes/makeBackUp');
-var logInRouter = require('./routes/logIn');
-
 var visionRouter = require('./routes/visionAPI');
 
-var app = express();
+var visionRouter = require('./routes/visionAPI');
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
@@ -26,13 +24,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/signUp', signupRouter);
-app.use('/doBackup', backupRouter);
-app.use('/makeBackup', mbackupRouter);
-app.use('/logIn', logInRouter);
-app.use('/visionAPI', visionRouter);
+app.get('/', function (req, res) {
+  res.send('Hello World!');
+});
+
+app.use('/signup', signupRouter);
+app.use('/backup', backupRouter);
+app.use('/makebackup', mbackupRouter);
+app.use('/picture', visionRouter);
 
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!');
