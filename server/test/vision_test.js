@@ -4,7 +4,7 @@ var express = require('express');
 var base64 = require('base-64');
 var router = express.Router();
 const client = new vision.ImageAnnotatorClient();
-var itemAdapter = require('../adapter/item-adapter.js');
+var itemAdapter = require('../adapters/item-adapter.js');
 
 var fileName = '';
 var file_path = './receipts/';
@@ -34,7 +34,7 @@ function split(info) {
                 category = '카페';
             }
         } else if (arr[i].indexOf('POS') != -1) {
-            console.log(arr[i].length);
+//            console.log(arr[i].length);
             if (arr[i].length == 17) {  //전자영수증일때
                 data = arr[i + 3].split(/(\s+)/);
                 date = data[0];
@@ -50,20 +50,24 @@ function split(info) {
         else if (arr[i].indexOf('결제금액') != -1) {
             totalPrice = arr[i + 2];
         }
-        else if (arr[i].indexOf('G)') != -1 || arr[i].indexOf('샌드') != -1 || arr[i].indexOf('SW') != -1 || arr[i].indexOf('F') != -1 || arr[i].indexOf('-T') != -1) {
+        else if (arr[i].indexOf('G)') != -1 || arr[i].indexOf('샌드') != -1 || arr[i].indexOf('SW') != -1 || arr[i].indexOf('F') != -1 || arr[i].indexOf('1-T') != -1) {
 	    var item_ko = arr[i].replace(/[a-z0-9]|[ \[\]{}()<>?|`~!@#$%^&*-_+=,.;:\"'\\]/g, "")
             
+	    console.log("arr[i] : " + arr[i]);
+	    console.log("item_ko : " + item_ko);
+
             itemAdapter.search(item_ko, null, function(resultCode, rows) {
                 if (resultCode == "Fail") {
-                    res.json({ success: false });
+                    return  false;
                 }
                 else {
+		    console.log("rows : " + rows);
                     item.push(rows.상품명);
                 }
             });
 
 //            item.push(arr[i]);
-            console.log(item.length);
+//            console.log(item.length);
             item_index.push(i);
             num_item = item.length;
         }
@@ -110,47 +114,25 @@ function split(info) {
 }
 
 
-router.post('/', function (req, res, next) {
+fileName = 'sample.jpg';
 
-    if (req.body.imgFile == undefined) {
-        return res.json({ success: false });
-    }
-    else {
-        fileName = req.body.fileName;
-	
-	var decodedData = base64.decode(req.body.imgFile);
-//	var bitmap = new Buffer(decodedData, 'base64');
-	
-	fs.writeFile(file_path+fileName, decodedData, "binary", (err) => {
-		if(err) throw err;
-	});
-/*
-	fs.readFile(file_path+fileName, function(err, data) {
-		if(err) {
-			return console.log(err);
-		}
-	});
-*/
-    }
-
-    client
-        .textDetection(fileName)
-        .then(results => {
-            const detections = results[0].textAnnotations;
-            if (detections[0] == null)
-                return res.json({ success: false });
-            else {
-                info = detections[0];
-                //console.log('part1',info);
-                a = split(info);
-                return res.json(a);
-            }
-        })
-        .catch(err => {
-            console.error('ERROR:', err);
-            return res.json({ success: false });
-        });
-
-});
+client
+    .textDetection(fileName)
+    .then(results => {
+        const detections = results[0].textAnnotations;
+        if (detections[0] == null)
+            return false;
+        else {
+            info = detections[0];
+            //console.log('part1',info);
+            a = split(info);
+            console.log(a);
+	    return true;
+        }
+    })
+    .catch(err => {
+        console.error('ERROR:', err);
+        return false;
+    });
 
 module.exports = router;
