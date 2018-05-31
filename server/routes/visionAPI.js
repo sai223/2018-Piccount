@@ -4,10 +4,9 @@ var express = require('express');
 var base64 = require('base-64');
 var router = express.Router();
 const client = new vision.ImageAnnotatorClient();
-var base64 = require('base-64');
 
 var fileName = '';
-var file_path = './';
+var file_path = './receipts/';
 
 function split(info) {
     item = [];
