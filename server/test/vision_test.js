@@ -53,6 +53,8 @@ function split(info) {
         else if (arr[i].indexOf('G)') != -1 || arr[i].indexOf('샌드') != -1 || arr[i].indexOf('SW') != -1 || arr[i].indexOf('F') != -1 || arr[i].indexOf('1-T') != -1) {
 	    var item_ko = arr[i].replace(/[a-z0-9]|[ \[\]{}()<>?|`~!@#$%^&*-_+=,.;:\"'\\]/g, "")
             
+	    item_ko = "Ame";
+
 	    console.log("arr[i] : " + arr[i]);
 	    console.log("item_ko : " + item_ko);
 
@@ -61,7 +63,8 @@ function split(info) {
                     return  false;
                 }
                 else {
-		    console.log("rows : " + rows);
+		    console.log("resultCode = " + resultCode);		    
+		    console.log("rows.상품명 : " + rows.상품명);
                     item.push(rows.상품명);
                 }
             });
