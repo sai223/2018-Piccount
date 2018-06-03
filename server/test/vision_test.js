@@ -55,22 +55,16 @@ function split(info) {
             
 	    item_ko = "Ame";
 
-	    console.log("arr[i] : " + arr[i]);
-	    console.log("item_ko : " + item_ko);
-
             itemAdapter.search(item_ko, null, function(resultCode, rows) {
                 if (resultCode == "Fail") {
                     return  false;
                 }
                 else {
-		    console.log("resultCode = " + resultCode);		    
-		    console.log("rows.상품명 : " + rows.상품명);
-                    item.push(rows.상품명);
+                   item.push(rows[0].상품명);
+		   console.log(rows[0].상품명);
                 }
             });
 
-//            item.push(arr[i]);
-//            console.log(item.length);
             item_index.push(i);
             num_item = item.length;
         }
