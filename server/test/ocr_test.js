@@ -5,7 +5,7 @@ const client = new vision.ImageAnnotatorClient();
 
 //*TODO(developer): Uncomment the following line before running the sample.
 
-const fileName = '/home/miin/DreamStart/2018-Piccount/server/test/sample.jpg';
+const fileName = '/home/ubuntu/server/asdfasdfas';
 
 // Performs text detection on the local file
 client

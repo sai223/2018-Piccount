@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var bodyParser = require('body-parser');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -10,7 +11,7 @@ var signupRouter = require('./routes/signup-router');
 var backupRouter = require('./routes/doBackUp');
 var mbackupRouter = require('./routes/makeBackUp');
 var logInRouter = require('./routes/logIn');
-var visionRouter = require('./routes/visionAPI');
+var visionRouter = require('./routes/vision3');
 
 var app = express();
 
@@ -19,8 +20,8 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
