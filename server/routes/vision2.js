@@ -3,6 +3,12 @@ var express = require('express');
 var router = express.Router();
 var elasticsearch = require('elasticsearch');
 var async = require('async');
+var exec = require('child-process').exec, child;
+const vase64 = require('base-64');
+const fs = require('fs');
+
+var fileName = '';
+var file_path = '/home/ubuntu/server/receipts/';
 
 const client = new vision.ImageAnnotatorClient();
 
@@ -13,7 +19,7 @@ var client1 = new elasticsearch.Client({
 
 function starbucks(arr, cb) {
     async.waterfall([
-        function(callback){
+        function (callback) {
 
             item_ = [];
             price = [];
@@ -62,39 +68,39 @@ function starbucks(arr, cb) {
                     }
                 }).then(function (resp) {
                     console.log('start!!')
-                    if(resp.hits.hits[0] != null){
+                    if (resp.hits.hits[0] != null) {
                         var hits = resp.hits.hits[0]._source;
                         item_.push({ "item": hits.item_name, "price": hits.price });
                         price.push(hits.price);
-                        if(item_ko.length == item_.length){
+                        if (item_ko.length == item_.length) {
                             console.log('info:', item_);
                             callback(shopName, category, date, item_, price);
                         }
                     }
-                    else{
-                        item_.push({"item":'',"price":0 });
+                    else {
+                        item_.push({ "item": '', "price": 0 });
                         price.push(0);
                     }
-                    
+
                 }, function (err) {
                     console.trace(err.message);
                     return { success: false }
                 });
             }
         }
-    ],function(shopName, category, date, item_, price){
-        console.log('get item_',item_);
-        console.log('get price:',price);
-        for(n=0; n<price.length; n++){
+    ], function (shopName, category, date, item_, price) {
+        console.log('get item_', item_);
+        console.log('get price:', price);
+        for (n = 0; n < price.length; n++) {
             totalPrice += price[n];
         }
-        cb({success:true, shop:shopName, category:category, date:date, info:item_, totalPrice:totalPrice})
+        cb({ success: true, shop: shopName, category: category, date: date, info: item_, totalPrice: totalPrice })
     });
 }
 
 function gs25(arr, cb) {
     async.waterfall([
-        function(callback){
+        function (callback) {
             item = [];
             price = [];
             item_ = [];
@@ -130,17 +136,17 @@ function gs25(arr, cb) {
                     }
                 }).then(function (resp) {
                     console.log('start!!')
-                    if(resp.hits.hits[0] != null){
+                    if (resp.hits.hits[0] != null) {
                         var hits = resp.hits.hits[0]._source;
                         item_.push({ "item": hits.item_name, "price": hits.price });
                         price.push(hits.price);
-                        if(item_ko.length == item_.length){
+                        if (item_ko.length == item_.length) {
                             console.log('info:', item_);
                             callback(shopName, category, date, item_, price);
                         }
                     }
-                    else{
-                        item_.push({"item":'',"price":0 });
+                    else {
+                        item_.push({ "item": '', "price": 0 });
                         price.push(0);
                     }
                 }, function (err) {
@@ -149,19 +155,19 @@ function gs25(arr, cb) {
                 });
             }
         }
-    ],function(shopName, category, date, item_, price){
-        console.log('get item_',item_);
-        console.log('get price:',price);
-        for(n=0; n<price.length; n++){
+    ], function (shopName, category, date, item_, price) {
+        console.log('get item_', item_);
+        console.log('get price:', price);
+        for (n = 0; n < price.length; n++) {
             totalPrice += price[n];
         }
-        cb({success:true, shop:shopName, category:category, date:date, info:item_, totalPrice:totalPrice})
+        cb({ success: true, shop: shopName, category: category, date: date, info: item_, totalPrice: totalPrice })
     });
 }
 
 function normal(arr, cb) {
     async.waterfall([
-        function(callback){
+        function (callback) {
             item = [];
             price = [];
             item_ = [];
@@ -171,14 +177,14 @@ function normal(arr, cb) {
             price_index = 0;
             item_num = 0;
 
-            if(arr[0].indexOf)
-            s = arr[0].split('"');
+            if (arr[0].indexOf)
+                s = arr[0].split('"');
             sh = s[1];
-            shop= sh.split(/(\s+)/);
+            shop = sh.split(/(\s+)/);
             shopName = shop[0];
-    
+
             for (i = 0; i < arr.length; i++) {
-                if (arr[i].indexOf('이마트')!=-1 || arr[i].indexOf('emar')!=-1 || arr[i].indexOf('homeplu')!=-1){
+                if (arr[i].indexOf('이마트') != -1 || arr[i].indexOf('emar') != -1 || arr[i].indexOf('homeplu') != -1) {
                     category = '대형마트';
                 }
                 else if (arr[i].indexOf('201') != -1) {
@@ -195,18 +201,18 @@ function normal(arr, cb) {
                     price_index = i;
                 }
                 */
-                else if (arr[i].indexOf('과세 물품') != -1){
+                else if (arr[i].indexOf('과세 물품') != -1) {
                     item_num = i;
                 }
             }
-            console.log('item_index:',item_index);
-            console.log('item_num',item_num);
-            for(k = item_index+1;k<item_num;k++){
+            console.log('item_index:', item_index);
+            console.log('item_num', item_num);
+            for (k = item_index + 1; k < item_num; k++) {
                 han = arr[k].replace(/[a-z0-9]|[ \[\]{}()<>?|`~!@#$%^&*-_+=,.;:\"'\\]/g, "");
-                console.log('han:',han);
-                if(han != '')
+                console.log('han:', han);
+                if (han != '')
                     item_ko.push(han);
-                    console.log('item_ko:',item_ko);
+                console.log('item_ko:', item_ko);
             }
             for (b = 0; b < item_ko.length; b++) {
                 client1.search({
@@ -221,17 +227,17 @@ function normal(arr, cb) {
                     }
                 }).then(function (resp) {
                     console.log('start!!')
-                    if(resp.hits.hits[0] != null){
+                    if (resp.hits.hits[0] != null) {
                         var hits = resp.hits.hits[0]._source;
                         item_.push({ "item": hits.item_name, "price": hits.price });
                         price.push(hits.price);
-                        if(item_ko.length == item_.length){
+                        if (item_ko.length == item_.length) {
                             console.log('info:', item_);
                             callback(shopName, category, date, item_, price);
                         }
                     }
-                    else{
-                        item_.push({"item":'',"price":0 });
+                    else {
+                        item_.push({ "item": '', "price": 0 });
                         price.push(0);
                     }
                 }, function (err) {
@@ -240,13 +246,13 @@ function normal(arr, cb) {
                 });
             }
         }
-    ],function(shopName, category, date, item_, price){
-        console.log('get item_',item_);
-        console.log('get price:',price);
-        for(n=0; n<price.length; n++){
+    ], function (shopName, category, date, item_, price) {
+        console.log('get item_', item_);
+        console.log('get price:', price);
+        for (n = 0; n < price.length; n++) {
             totalPrice += price[n];
         }
-        cb({success:true, shop:shopName, category:category, date:date, info:item_, totalPrice:totalPrice})
+        cb({ success: true, shop: shopName, category: category, date: date, info: item_, totalPrice: totalPrice })
     });
 }
 
@@ -284,7 +290,7 @@ function split(info, cb) {
             cb({ success: true, shop: shopName, category: category, date: date, info: info, totalPrice: totalPrice });
         });
     }
-    else{
+    else {
         console.log('일반 상호');
         normal(arr, function (res) {
             result = res;
@@ -306,7 +312,13 @@ router.post('/', function (req, res, next) {
         return res.json({ success: false });
     }
     else {
-        //console.log(req.body);
+        fileName = req.body.fileName;
+        file_path = '/home/ubuntu/server/receipts/';
+        var decodedData = base64.decode(req.body.imgFile);
+        file_path += fileName;
+        fs.writeFile(file_path, decodedData, "binary", (err) => {
+            if (err) throw err;
+        });
     }
     client
         .textDetection(req.body.imgFile)
@@ -322,6 +334,11 @@ router.post('/', function (req, res, next) {
                 });
                 //return res.json(a);
             }
+            child = exec('rm /home/ubuntu/server/receipts/*', function (err, stdout, stderr) {
+                if (err !== null) {
+                    console.log('exec error: ' + err);
+                }
+            });
         })
         .catch(err => {
             console.error('ERROR:', err);
