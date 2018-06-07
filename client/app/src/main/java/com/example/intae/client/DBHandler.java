@@ -4,8 +4,10 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DBHandler extends SQLiteOpenHelper {
     // DBHandler 생성자로 관리할 DB 이름과 버전 정보를 받음
@@ -148,7 +150,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
     // 2) (Expense 데이터의 date값 + User 데이터의 user_id값)을 기준으로 검색
     // => 해당하는 Expense 데이터 배열을 리턴
-    public Vector<Data_Expense> get_expense_data(
+    public List<Data_Expense> get_expense_data(
             int start_date_year,
             int start_date_month,
             int start_date_day,
@@ -157,16 +159,18 @@ public class DBHandler extends SQLiteOpenHelper {
             int end_date_day,
             String user_id
     ){
+        Data_Expense tmp;
         SQLiteDatabase db = getReadableDatabase();
-        Vector<Data_Expense> result = new Vector<Data_Expense>(3);
+        List<Data_Expense> result = new ArrayList<Data_Expense>();
 
-        String query = "SELECT * FROM EXPENSE WHERE user_id = '" + user_id
-                + "' AND (date_year >= " + start_date_year + " AND date_year <= " + end_date_year + ")"
-                + " AND (date_month >= " + start_date_month + " AND date_month <= " + end_date_month + ")"
-                + " AND (date_day >= " + start_date_day + " AND date_day <= " + end_date_day + ");";
+        int start_total = start_date_year*1500+start_date_month * 100 + start_date_day;
+        int end_total = end_date_year*1500+end_date_month * 100 + end_date_day;
+
+        String query = "SELECT * FROM EXPENSE WHERE user_id='" + user_id + "' AND (date_year*1500+date_month*100+date_day BETWEEN "+start_total + " AND " + end_total + ");";
+
         Cursor cursor = db.rawQuery(query, null);
         while(cursor.moveToNext()){
-            Data_Expense tmp = new Data_Expense(
+            tmp = new Data_Expense(
                     cursor.getInt(0),
                     cursor.getString(1),
                     cursor.getString(2),
@@ -218,11 +222,11 @@ public class DBHandler extends SQLiteOpenHelper {
 
     // 2) Expense 데이터의 expense_id값을 기준으로 검색
     // => 해당하는 Detail_Expense 데이터 배열을 리턴
-    public Vector<Data_Detail_Expense> get_detail_expense_data(
+    public List<Data_Detail_Expense> get_detail_expense_data(
             int _expense_id
     ){
         SQLiteDatabase db = getReadableDatabase();
-        Vector<Data_Detail_Expense> result = new Vector<Data_Detail_Expense>(3);
+        List<Data_Detail_Expense> result = new ArrayList<Data_Detail_Expense>();
         String query = "SELECT * FROM DETAIL_EXPENSE WHERE expense_id=" + _expense_id + ";";
 
         Cursor cursor = db.rawQuery(query, null);
@@ -275,7 +279,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
     // 2) (Income 데이터의 date값 + User 데이터의 user_id값)을 기준으로 검색
     // => 해당하는 Income 데이터 배열을 리턴
-    public Vector<Data_Income> get_income_data(
+    public List<Data_Income> get_income_data(
             int start_date_year,
             int start_date_month,
             int start_date_day,
@@ -285,7 +289,7 @@ public class DBHandler extends SQLiteOpenHelper {
             String user_id
     ){
         SQLiteDatabase db = getReadableDatabase();
-        Vector<Data_Income> result = new Vector<Data_Income>(3);
+        List<Data_Income> result = new ArrayList<Data_Income>();
 
         String query = "SELECT * FROM INCOME WHERE user_id='" + user_id
                 + "' AND (date_year >= " + start_date_year + " AND date_year <= " + end_date_year + ")"
@@ -327,7 +331,6 @@ public class DBHandler extends SQLiteOpenHelper {
         db.close();
     }
 }
-
 
 
 

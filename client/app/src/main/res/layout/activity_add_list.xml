@@ -1,51 +1,280 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_alignParentBottom = "true"
-    tools:context=".AddListActivity"
-    tools:layout_editor_absoluteX="16dp"
-    tools:layout_editor_absoluteY="78dp">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_alignParentBottom ="true"
-    android:gravity="center_horizontal">
-    <Button
-        android:id="@+id/ListCheckButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ListCheck"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:context=".AddListActivity"
         tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="447dp" />
+        tools:layout_editor_absoluteY="78dp">
 
-    <Button
-        android:id="@+id/AddListButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="AddList"
-        tools:layout_editor_absoluteX="104dp"
-        tools:layout_editor_absoluteY="447dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/ReportCheckButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ReportCheck"
-        tools:layout_editor_absoluteX="192dp"
-        tools:layout_editor_absoluteY="447dp" />
+            <ImageButton
+                android:id="@+id/addDetailButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/tab2_add_records" />
 
-    <Button
-        android:id="@+id/SettingsButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Settings"
-        tools:layout_editor_absoluteX="280dp"
-        tools:layout_editor_absoluteY="447dp" />
-</LinearLayout>
+            <ImageButton
+                android:id="@+id/gotoCameraButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/ic_action_name" />
 
-</RelativeLayout>
+        </LinearLayout> // + 버튼, 카메라 버튼
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="상호명" />
+
+            <EditText
+                android:id="@+id/store_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:inputType="text"
+                android:textSize="13dp" />
+
+        </LinearLayout> // 상호명
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="업종" />
+
+            <Spinner
+                android:id="@+id/addlistUpjong"
+                android:layout_marginLeft="40dp"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"></Spinner>
+
+        </LinearLayout> // 업종
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="날짜" />
+
+            <EditText
+                android:id="@+id/date_year"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:inputType="number"
+                android:textSize="13dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="년" />
+
+            <EditText
+                android:id="@+id/date_month"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:inputType="number"
+                android:textSize="13dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="월" />
+
+            <EditText
+                android:id="@+id/date_day"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:inputType="number"
+                android:textSize="13dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="일" />
+
+        </LinearLayout> // 년 월 일
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="총 금액" />
+
+            <EditText
+                android:id="@+id/total_price"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:inputType="number"
+                android:textSize="13dp" />
+
+        </LinearLayout> // 총금액
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="               "/> // break line
+        </LinearLayout> // break line
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="상품명" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="가격" />
+
+        </LinearLayout> // 상품명 | 가격
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/detail_LinearLayout_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1)"/>
+
+                    <EditText
+                        android:id="@+id/detail_productName_1"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="25dp"
+                        android:inputType="text"
+                        android:layout_weight="1"
+                        android:textSize="13dp" />
+
+                    <EditText
+                        android:id="@+id/detail_productPrice_1"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:layout_weight="1"
+                        android:textSize="13dp" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/detail_LinearLayout_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2)"/>
+
+                    <EditText
+                        android:id="@+id/detail_productName_2"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="25dp"
+                        android:inputType="text"
+                        android:layout_weight="1"
+                        android:textSize="13dp" />
+
+                    <EditText
+                        android:id="@+id/detail_productPrice_2"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:layout_weight="1"
+                        android:textSize="13dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+        <Button
+            android:id="@+id/commit"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="확인" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center">
+            <ImageButton
+                android:id="@+id/ListCheckButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/tab1_see_records"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="447dp" />
+
+            <ImageButton
+                android:id="@+id/AddListButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/tab2_add_records"
+                tools:layout_editor_absoluteX="104dp"
+                tools:layout_editor_absoluteY="447dp" />
+
+            <ImageButton
+                android:id="@+id/ReportCheckButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/tab3_report"
+                tools:layout_editor_absoluteX="192dp"
+                tools:layout_editor_absoluteY="447dp" />
+
+            <ImageButton
+                android:id="@+id/SettingsButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/tab4_setting"
+                tools:layout_editor_absoluteX="280dp"
+                tools:layout_editor_absoluteY="447dp" />
+
+        </LinearLayout> // 네비게이터 버튼 모음
+
+    </LinearLayout>
+</ScrollView>

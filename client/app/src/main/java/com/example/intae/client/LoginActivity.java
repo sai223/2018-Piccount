@@ -24,10 +24,12 @@ import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Response;
 
+
 public class LoginActivity extends AppCompatActivity {
     HttpConnection httpConn = HttpConnection.getInstance();
     EditText idInput, pwInput;
     String id, password;
+    static String validID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,17 +39,17 @@ public class LoginActivity extends AppCompatActivity {
         pwInput = (EditText)findViewById(R.id.passwordInput);
         Button logInButton = (Button)findViewById(R.id.loginButton);
         Button signupPageButton = (Button)findViewById(R.id.signupPageButton);
-        id = idInput.getText().toString();
-        password = pwInput.getText().toString();
+
 
         logInButton.setOnClickListener(new View.OnClickListener() {//버튼을 클릭하면, 로그인 정보를 서버로 전달
             @Override
             public void onClick(View v) {
+               // id = idInput.getText().toString();
+                //password = pwInput.getText().toString();
+                //new UserInfo().setValidID(id);
                 //sendIDData();
-                //loginFailureShow();
                 Intent intent = new Intent(getApplicationContext(),ListCheckActivity.class);
                 startActivity(intent);
-
             }
         });
         signupPageButton.setOnClickListener(new View.OnClickListener() {
@@ -63,7 +65,7 @@ public class LoginActivity extends AppCompatActivity {
         new Thread(){
             public void run(){
                 //@TEST: 로그인 정보가 제대로 전송되는지
-                httpConn.requestWebServer(id,password, callback);
+                httpConn.requestWebServer(id,password,callback);
             }
         }.start();
     }
@@ -81,7 +83,8 @@ public class LoginActivity extends AppCompatActivity {
             try {
                 JSONObject jObject = new JSONObject(jsonData);
                 if(jObject.getBoolean("success")){//로그인 정보가 유효할 경우, 메인 액티비티로 전환
-                    Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                    //new UserInfo().setValidID(id);
+                    Intent intent = new Intent(getApplicationContext(),ListCheckActivity.class);
                     startActivity(intent);
                 }else{//로그인 정보가 유효하지 않을 경우, 로그인 정보가 틀리다는 팝업창을 띄움
                     loginFailureShow();

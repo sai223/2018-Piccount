@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.List;
 import java.util.Vector;
 
 public class SecondFragment extends Fragment {
@@ -64,19 +65,19 @@ public class SecondFragment extends Fragment {
 
                 expenseDB.add_expense_data(tmp);
 
-                Vector<Data_Expense> tmptmp = expenseDB.get_expense_data(
+                List<Data_Expense> tmptmp = expenseDB.get_expense_data(
                         0, 0, 0,
                         10000, 10000, 10000,
                         "temp_user_id"
                 );
 
                 for(int i = 0;i < tmptmp.size();i++) {
-                    String ttt = tmptmp.elementAt(i).store_name + " "
-                            + tmptmp.elementAt(i).date_year + "년 "
-                            + tmptmp.elementAt(i).date_month + "월 "
-                            + tmptmp.elementAt(i).date_day + "일 "
-                            + tmptmp.elementAt(i).upjong + " "
-                            + tmptmp.elementAt(i).total_price;
+                    String ttt = tmptmp.get(i).store_name + " "
+                            + tmptmp.get(i).date_year + "년 "
+                            + tmptmp.get(i).date_month + "월 "
+                            + tmptmp.get(i).date_day + "일 "
+                            + tmptmp.get(i).upjong + " "
+                            + tmptmp.get(i).total_price;
                     result.append(ttt);
                 }
             }

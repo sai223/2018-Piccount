@@ -9,7 +9,11 @@ router.post('/', function(req, res){
             return res.json({ success : false});  
     }
     else {
-
+console.log(req.body.id);
+console.log(req.body.password);
+console.log(req.body.name);
+console.log(req.body.birthday);
+console.log(req.body.phoneNumber);
     }
     
     userAdapter.search(req.body.id, null, function(resultCode, rows) {

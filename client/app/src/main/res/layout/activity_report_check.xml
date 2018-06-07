@@ -9,43 +9,120 @@
     tools:context=".ReportCheckActivity"
     tools:layout_editor_absoluteX="16dp"
     tools:layout_editor_absoluteY="78dp">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom ="true"
         android:gravity="center_horizontal">
-        <Button
+
+        <ImageButton
             android:id="@+id/ListCheckButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ListCheck"
-
+            android:src="@drawable/tab1_see_records"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="447dp" />
 
-        <Button
+        <ImageButton
             android:id="@+id/AddListButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="AddList"
+            android:src="@drawable/tab2_add_records"
             tools:layout_editor_absoluteX="104dp"
             tools:layout_editor_absoluteY="447dp" />
 
-        <Button
+        <ImageButton
             android:id="@+id/ReportCheckButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ReportCheck"
+            android:src="@drawable/tab3_report"
             tools:layout_editor_absoluteX="192dp"
             tools:layout_editor_absoluteY="447dp" />
 
-        <Button
+        <ImageButton
             android:id="@+id/SettingsButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Settings"
+            android:src="@drawable/tab4_setting"
             tools:layout_editor_absoluteX="280dp"
             tools:layout_editor_absoluteY="447dp" />
     </LinearLayout>
 
+    <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/report"
+        android:layout_width="match_parent"
+        android:layout_height="313dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="111dp"></com.github.mikephil.charting.charts.PieChart>
+    <!--
+        <Spinner
+            android:id="@+id/start_year"
+            android:layout_width="120dp"
+            android:layout_height="42dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="82dp" />
+
+        <Spinner
+            android:id="@+id/end_year"
+            android:layout_width="120dp"
+            android:layout_height="42dp"
+            android:layout_alignStart="@+id/start_year"
+            android:layout_below="@+id/start_year" />
+
+        <Spinner
+            android:id="@+id/start_month"
+            android:layout_width="100dp"
+            android:layout_height="42dp"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/start_year" />
+
+        <Spinner
+            android:id="@+id/end_month"
+            android:layout_width="100dp"
+            android:layout_height="42dp"
+            android:layout_below="@+id/start_year"
+            android:layout_toEndOf="@+id/start_year" />
+
+        <Spinner
+            android:id="@+id/start_day"
+            android:layout_width="100dp"
+            android:layout_height="42dp"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/start_month" />
+
+        <Spinner
+            android:id="@+id/end_day"
+            android:layout_width="100dp"
+            android:layout_height="42dp"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/start_year" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="82dp"
+            android:layout_height="30dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="12dp"
+            android:text="시작일" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="82dp"
+            android:layout_height="42dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/start_year"
+            android:text="종료일" />
+    -->
+    <Button
+        android:id="@+id/reportCheckRefreshButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/report"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-111dp"
+        android:text="새로 고침" />
 </RelativeLayout>

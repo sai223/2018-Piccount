@@ -48,4 +48,7 @@ public class Data_Expense {
         upjong = _upjong;
         total_price = _total_price;
     }
+    public int getDateTotal(){
+        return 1500*date_year+100*date_month+date_day;
+    }
 }

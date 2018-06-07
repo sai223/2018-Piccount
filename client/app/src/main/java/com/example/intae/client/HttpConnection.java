@@ -26,10 +26,11 @@ public class HttpConnection {
                 .build();
 
         Request request = new Request.Builder()
-                .url("http://13.125.192.162:3000/logIn")
+                .url("http://13.124.74.152:3000/logIn")
                 .post(body)
                 .build();
         client.newCall(request).enqueue(callback);
+        System.out.println("request!!!!");
     }
     public void requestSignupWebServer(String id, String password, String name, String birthday, String phoneNumber, Callback callback){
         RequestBody body = new FormBody.Builder()
@@ -41,9 +42,24 @@ public class HttpConnection {
                 .build();
 
         Request request = new Request.Builder()
-                .url("http://13.125.192.162:3000/signup-router")
+                .url("http://13.124.74.152:3000/signUp")
                 .post(body)
                 .build();
+        client.newCall(request).enqueue(callback);
+    }
+
+    public void sendImageToWebServer(String encodedImage, Callback callback){
+        RequestBody body = new FormBody.Builder()
+                .add("imgFile", encodedImage)
+                .add("fileName", ""+(Math.random() * 10000000))
+                .build();
+
+        Request request = new Request.Builder()
+                .url("http://13.124.74.152:3000/visionAPI")
+                .post(body)
+                .build();
+
+        Log.d("@@@@@@", "서버로 출발했음");
         client.newCall(request).enqueue(callback);
     }
     public OkHttpClient getClient(){

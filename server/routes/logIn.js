@@ -13,18 +13,12 @@ var userId = '';
 var userPassword = '';
 
 router.post('/', function (req, res) {
-/*
-console.log("router.post was called.");
-userId = req.body.id;
-userPassword = req.body.password;
-
-console.log(userId + " / " + userPassword);
-
-return res.json({success : true});
-*/
 	if(req.body.id == undefined, req.body.password == undefined) {
 		return res.json({success : false});
 	} else {
+console.log(req.body.id);
+console.log(req.body.password);
+
 		userId = req.body.id;
 		userPassword = req.body.password;
 
