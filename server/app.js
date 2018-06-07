@@ -13,6 +13,8 @@ var signupRouter = require('./routes/signup-router');
 var backupRouter = require('./routes/doBackUp');
 var mbackupRouter = require('./routes/makeBackUp');
 var visionRouter = require('./routes/visionAPI');
+var vision = require('./routes/vision1');
+var vT = require('./routes/vision2');
 
 var app = express();
 
@@ -32,6 +34,8 @@ app.use('/signup', signupRouter);
 app.use('/backup', backupRouter);
 app.use('/makebackup', mbackupRouter);
 app.use('/picture', visionRouter);
+app.use('/vision1', vision);
+app.use('/vision2',vT);
 
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!');
