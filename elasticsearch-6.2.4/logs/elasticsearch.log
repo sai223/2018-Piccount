@@ -1,0 +1,119 @@
+[2018-06-03T16:08:54,563][INFO ][o.e.n.Node               ] [] initializing ...
+[2018-06-03T16:08:54,713][INFO ][o.e.e.NodeEnvironment    ] [eCQUrkO] using [1] data paths, mounts [[/ (/dev/xvda1)]], net usable_space [3.7gb], net total_space [7.6gb], types [ext4]
+[2018-06-03T16:08:54,716][INFO ][o.e.e.NodeEnvironment    ] [eCQUrkO] heap size [193.3mb], compressed ordinary object pointers [true]
+[2018-06-03T16:08:54,720][INFO ][o.e.n.Node               ] node name [eCQUrkO] derived from node ID [eCQUrkOQRvSGO6KupUX0gA]; set [node.name] to override
+[2018-06-03T16:08:54,720][INFO ][o.e.n.Node               ] version[6.2.4], pid[25817], build[ccec39f/2018-04-12T20:37:28.497551Z], OS[Linux/4.4.0-1057-aws/amd64], JVM[Oracle Corporation/Java HotSpot(TM) 64-Bit Server VM/1.8.0_171/25.171-b11]
+[2018-06-03T16:08:54,720][INFO ][o.e.n.Node               ] JVM arguments [-Xms200m, -Xmx200m, -XX:+UseConcMarkSweepGC, -XX:CMSInitiatingOccupancyFraction=75, -XX:+UseCMSInitiatingOccupancyOnly, -XX:+AlwaysPreTouch, -Xss1m, -Djava.awt.headless=true, -Dfile.encoding=UTF-8, -Djna.nosys=true, -XX:-OmitStackTraceInFastThrow, -Dio.netty.noUnsafe=true, -Dio.netty.noKeySetOptimization=true, -Dio.netty.recycler.maxCapacityPerThread=0, -Dlog4j.shutdownHookEnabled=false, -Dlog4j2.disable.jmx=true, -Djava.io.tmpdir=/tmp/elasticsearch.Pt8I7d6C, -XX:+HeapDumpOnOutOfMemoryError, -XX:+PrintGCDetails, -XX:+PrintGCDateStamps, -XX:+PrintTenuringDistribution, -XX:+PrintGCApplicationStoppedTime, -Xloggc:logs/gc.log, -XX:+UseGCLogFileRotation, -XX:NumberOfGCLogFiles=32, -XX:GCLogFileSize=64m, -Des.path.home=/home/ubuntu/elasticsearch-6.2.4, -Des.path.conf=/home/ubuntu/elasticsearch-6.2.4/config]
+[2018-06-03T16:08:56,055][INFO ][o.e.p.PluginsService     ] [eCQUrkO] loaded module [aggs-matrix-stats]
+[2018-06-03T16:08:56,055][INFO ][o.e.p.PluginsService     ] [eCQUrkO] loaded module [analysis-common]
+[2018-06-03T16:08:56,056][INFO ][o.e.p.PluginsService     ] [eCQUrkO] loaded module [ingest-common]
+[2018-06-03T16:08:56,056][INFO ][o.e.p.PluginsService     ] [eCQUrkO] loaded module [lang-expression]
+[2018-06-03T16:08:56,057][INFO ][o.e.p.PluginsService     ] [eCQUrkO] loaded module [lang-mustache]
+[2018-06-03T16:08:56,057][INFO ][o.e.p.PluginsService     ] [eCQUrkO] loaded module [lang-painless]
+[2018-06-03T16:08:56,057][INFO ][o.e.p.PluginsService     ] [eCQUrkO] loaded module [mapper-extras]
+[2018-06-03T16:08:56,057][INFO ][o.e.p.PluginsService     ] [eCQUrkO] loaded module [parent-join]
+[2018-06-03T16:08:56,058][INFO ][o.e.p.PluginsService     ] [eCQUrkO] loaded module [percolator]
+[2018-06-03T16:08:56,058][INFO ][o.e.p.PluginsService     ] [eCQUrkO] loaded module [rank-eval]
+[2018-06-03T16:08:56,058][INFO ][o.e.p.PluginsService     ] [eCQUrkO] loaded module [reindex]
+[2018-06-03T16:08:56,058][INFO ][o.e.p.PluginsService     ] [eCQUrkO] loaded module [repository-url]
+[2018-06-03T16:08:56,058][INFO ][o.e.p.PluginsService     ] [eCQUrkO] loaded module [transport-netty4]
+[2018-06-03T16:08:56,059][INFO ][o.e.p.PluginsService     ] [eCQUrkO] loaded module [tribe]
+[2018-06-03T16:08:56,059][INFO ][o.e.p.PluginsService     ] [eCQUrkO] no plugins loaded
+[2018-06-03T16:09:01,197][INFO ][o.e.d.DiscoveryModule    ] [eCQUrkO] using discovery type [zen]
+[2018-06-03T16:09:02,541][INFO ][o.e.n.Node               ] initialized
+[2018-06-03T16:09:02,546][INFO ][o.e.n.Node               ] [eCQUrkO] starting ...
+[2018-06-03T16:09:02,846][INFO ][o.e.t.TransportService   ] [eCQUrkO] publish_address {127.0.0.1:9300}, bound_addresses {[::1]:9300}, {127.0.0.1:9300}
+[2018-06-03T16:09:02,872][WARN ][o.e.b.BootstrapChecks    ] [eCQUrkO] max number of threads [3900] for user [ubuntu] is too low, increase to at least [4096]
+[2018-06-03T16:09:02,873][WARN ][o.e.b.BootstrapChecks    ] [eCQUrkO] max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]
+[2018-06-03T16:09:05,964][INFO ][o.e.c.s.MasterService    ] [eCQUrkO] zen-disco-elected-as-master ([0] nodes joined), reason: new_master {eCQUrkO}{eCQUrkOQRvSGO6KupUX0gA}{W_ME0ROHQ_-EAR6XLc7Nnw}{127.0.0.1}{127.0.0.1:9300}
+[2018-06-03T16:09:05,970][INFO ][o.e.c.s.ClusterApplierService] [eCQUrkO] new_master {eCQUrkO}{eCQUrkOQRvSGO6KupUX0gA}{W_ME0ROHQ_-EAR6XLc7Nnw}{127.0.0.1}{127.0.0.1:9300}, reason: apply cluster state (from master [master {eCQUrkO}{eCQUrkOQRvSGO6KupUX0gA}{W_ME0ROHQ_-EAR6XLc7Nnw}{127.0.0.1}{127.0.0.1:9300} committed version [1] source [zen-disco-elected-as-master ([0] nodes joined)]])
+[2018-06-03T16:09:06,012][INFO ][o.e.h.n.Netty4HttpServerTransport] [eCQUrkO] publish_address {127.0.0.1:9200}, bound_addresses {[::1]:9200}, {127.0.0.1:9200}
+[2018-06-03T16:09:06,013][INFO ][o.e.n.Node               ] [eCQUrkO] started
+[2018-06-03T16:09:06,014][INFO ][o.e.g.GatewayService     ] [eCQUrkO] recovered [0] indices into cluster_state
+[2018-06-03T16:10:30,312][INFO ][o.e.n.Node               ] [eCQUrkO] stopping ...
+[2018-06-03T16:10:30,337][INFO ][o.e.n.Node               ] [eCQUrkO] stopped
+[2018-06-03T16:10:30,337][INFO ][o.e.n.Node               ] [eCQUrkO] closing ...
+[2018-06-03T16:10:30,356][INFO ][o.e.n.Node               ] [eCQUrkO] closed
+[2018-06-03T16:43:41,890][INFO ][o.e.n.Node               ] [] initializing ...
+[2018-06-03T16:43:42,009][INFO ][o.e.e.NodeEnvironment    ] [eCQUrkO] using [1] data paths, mounts [[/ (/dev/xvda1)]], net usable_space [3.7gb], net total_space [7.6gb], types [ext4]
+[2018-06-03T16:43:42,011][INFO ][o.e.e.NodeEnvironment    ] [eCQUrkO] heap size [193.3mb], compressed ordinary object pointers [true]
+[2018-06-03T16:43:42,013][INFO ][o.e.n.Node               ] node name [eCQUrkO] derived from node ID [eCQUrkOQRvSGO6KupUX0gA]; set [node.name] to override
+[2018-06-03T16:43:42,014][INFO ][o.e.n.Node               ] version[6.2.4], pid[26156], build[ccec39f/2018-04-12T20:37:28.497551Z], OS[Linux/4.4.0-1057-aws/amd64], JVM[Oracle Corporation/Java HotSpot(TM) 64-Bit Server VM/1.8.0_171/25.171-b11]
+[2018-06-03T16:43:42,015][INFO ][o.e.n.Node               ] JVM arguments [-Xms200m, -Xmx200m, -XX:+UseConcMarkSweepGC, -XX:CMSInitiatingOccupancyFraction=75, -XX:+UseCMSInitiatingOccupancyOnly, -XX:+AlwaysPreTouch, -Xss1m, -Djava.awt.headless=true, -Dfile.encoding=UTF-8, -Djna.nosys=true, -XX:-OmitStackTraceInFastThrow, -Dio.netty.noUnsafe=true, -Dio.netty.noKeySetOptimization=true, -Dio.netty.recycler.maxCapacityPerThread=0, -Dlog4j.shutdownHookEnabled=false, -Dlog4j2.disable.jmx=true, -Djava.io.tmpdir=/tmp/elasticsearch.qY7coCdP, -XX:+HeapDumpOnOutOfMemoryError, -XX:+PrintGCDetails, -XX:+PrintGCDateStamps, -XX:+PrintTenuringDistribution, -XX:+PrintGCApplicationStoppedTime, -Xloggc:logs/gc.log, -XX:+UseGCLogFileRotation, -XX:NumberOfGCLogFiles=32, -XX:GCLogFileSize=64m, -Des.path.home=/home/ubuntu/elasticsearch-6.2.4, -Des.path.conf=/home/ubuntu/elasticsearch-6.2.4/config]
+[2018-06-03T16:43:43,309][INFO ][o.e.p.PluginsService     ] [eCQUrkO] loaded module [aggs-matrix-stats]
+[2018-06-03T16:43:43,309][INFO ][o.e.p.PluginsService     ] [eCQUrkO] loaded module [analysis-common]
+[2018-06-03T16:43:43,310][INFO ][o.e.p.PluginsService     ] [eCQUrkO] loaded module [ingest-common]
+[2018-06-03T16:43:43,311][INFO ][o.e.p.PluginsService     ] [eCQUrkO] loaded module [lang-expression]
+[2018-06-03T16:43:43,311][INFO ][o.e.p.PluginsService     ] [eCQUrkO] loaded module [lang-mustache]
+[2018-06-03T16:43:43,311][INFO ][o.e.p.PluginsService     ] [eCQUrkO] loaded module [lang-painless]
+[2018-06-03T16:43:43,312][INFO ][o.e.p.PluginsService     ] [eCQUrkO] loaded module [mapper-extras]
+[2018-06-03T16:43:43,312][INFO ][o.e.p.PluginsService     ] [eCQUrkO] loaded module [parent-join]
+[2018-06-03T16:43:43,313][INFO ][o.e.p.PluginsService     ] [eCQUrkO] loaded module [percolator]
+[2018-06-03T16:43:43,313][INFO ][o.e.p.PluginsService     ] [eCQUrkO] loaded module [rank-eval]
+[2018-06-03T16:43:43,314][INFO ][o.e.p.PluginsService     ] [eCQUrkO] loaded module [reindex]
+[2018-06-03T16:43:43,314][INFO ][o.e.p.PluginsService     ] [eCQUrkO] loaded module [repository-url]
+[2018-06-03T16:43:43,314][INFO ][o.e.p.PluginsService     ] [eCQUrkO] loaded module [transport-netty4]
+[2018-06-03T16:43:43,314][INFO ][o.e.p.PluginsService     ] [eCQUrkO] loaded module [tribe]
+[2018-06-03T16:43:43,315][INFO ][o.e.p.PluginsService     ] [eCQUrkO] no plugins loaded
+[2018-06-03T16:43:48,254][INFO ][o.e.d.DiscoveryModule    ] [eCQUrkO] using discovery type [zen]
+[2018-06-03T16:43:49,600][INFO ][o.e.n.Node               ] initialized
+[2018-06-03T16:43:49,607][INFO ][o.e.n.Node               ] [eCQUrkO] starting ...
+[2018-06-03T16:43:49,891][INFO ][o.e.t.TransportService   ] [eCQUrkO] publish_address {127.0.0.1:9300}, bound_addresses {[::1]:9300}, {127.0.0.1:9300}
+[2018-06-03T16:43:49,923][WARN ][o.e.b.BootstrapChecks    ] [eCQUrkO] max number of threads [3900] for user [ubuntu] is too low, increase to at least [4096]
+[2018-06-03T16:43:49,925][WARN ][o.e.b.BootstrapChecks    ] [eCQUrkO] max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]
+[2018-06-03T16:43:53,009][INFO ][o.e.c.s.MasterService    ] [eCQUrkO] zen-disco-elected-as-master ([0] nodes joined), reason: new_master {eCQUrkO}{eCQUrkOQRvSGO6KupUX0gA}{v1MmgFT6Ttq0j8fp6tVsmQ}{127.0.0.1}{127.0.0.1:9300}
+[2018-06-03T16:43:53,025][INFO ][o.e.c.s.ClusterApplierService] [eCQUrkO] new_master {eCQUrkO}{eCQUrkOQRvSGO6KupUX0gA}{v1MmgFT6Ttq0j8fp6tVsmQ}{127.0.0.1}{127.0.0.1:9300}, reason: apply cluster state (from master [master {eCQUrkO}{eCQUrkOQRvSGO6KupUX0gA}{v1MmgFT6Ttq0j8fp6tVsmQ}{127.0.0.1}{127.0.0.1:9300} committed version [1] source [zen-disco-elected-as-master ([0] nodes joined)]])
+[2018-06-03T16:43:53,075][INFO ][o.e.h.n.Netty4HttpServerTransport] [eCQUrkO] publish_address {127.0.0.1:9200}, bound_addresses {[::1]:9200}, {127.0.0.1:9200}
+[2018-06-03T16:43:53,076][INFO ][o.e.n.Node               ] [eCQUrkO] started
+[2018-06-03T16:43:53,077][INFO ][o.e.g.GatewayService     ] [eCQUrkO] recovered [0] indices into cluster_state
+[2018-06-03T16:44:33,787][INFO ][o.e.c.m.MetaDataCreateIndexService] [eCQUrkO] [customer] creating index, cause [auto(bulk api)], templates [], shards [5]/[1], mappings []
+[2018-06-03T16:44:34,354][INFO ][o.e.c.m.MetaDataMappingService] [eCQUrkO] [customer/OqlB1yPDSM2X9IkTuW_b9g] create_mapping [external]
+[2018-06-03T18:44:58,814][INFO ][o.e.n.Node               ] [eCQUrkO] stopping ...
+[2018-06-03T18:44:58,941][INFO ][o.e.n.Node               ] [eCQUrkO] stopped
+[2018-06-03T18:44:58,943][INFO ][o.e.n.Node               ] [eCQUrkO] closing ...
+[2018-06-03T18:44:58,969][INFO ][o.e.n.Node               ] [eCQUrkO] closed
+[2018-06-03T19:00:35,616][INFO ][o.e.n.Node               ] [] initializing ...
+[2018-06-03T19:00:35,754][INFO ][o.e.e.NodeEnvironment    ] [eCQUrkO] using [1] data paths, mounts [[/ (/dev/xvda1)]], net usable_space [3.7gb], net total_space [7.6gb], types [ext4]
+[2018-06-03T19:00:35,756][INFO ][o.e.e.NodeEnvironment    ] [eCQUrkO] heap size [193.3mb], compressed ordinary object pointers [true]
+[2018-06-03T19:00:35,795][INFO ][o.e.n.Node               ] node name [eCQUrkO] derived from node ID [eCQUrkOQRvSGO6KupUX0gA]; set [node.name] to override
+[2018-06-03T19:00:35,797][INFO ][o.e.n.Node               ] version[6.2.4], pid[26894], build[ccec39f/2018-04-12T20:37:28.497551Z], OS[Linux/4.4.0-1057-aws/amd64], JVM[Oracle Corporation/Java HotSpot(TM) 64-Bit Server VM/1.8.0_171/25.171-b11]
+[2018-06-03T19:00:35,798][INFO ][o.e.n.Node               ] JVM arguments [-Xms200m, -Xmx200m, -XX:+UseConcMarkSweepGC, -XX:CMSInitiatingOccupancyFraction=75, -XX:+UseCMSInitiatingOccupancyOnly, -XX:+AlwaysPreTouch, -Xss1m, -Djava.awt.headless=true, -Dfile.encoding=UTF-8, -Djna.nosys=true, -XX:-OmitStackTraceInFastThrow, -Dio.netty.noUnsafe=true, -Dio.netty.noKeySetOptimization=true, -Dio.netty.recycler.maxCapacityPerThread=0, -Dlog4j.shutdownHookEnabled=false, -Dlog4j2.disable.jmx=true, -Djava.io.tmpdir=/tmp/elasticsearch.970N9res, -XX:+HeapDumpOnOutOfMemoryError, -XX:+PrintGCDetails, -XX:+PrintGCDateStamps, -XX:+PrintTenuringDistribution, -XX:+PrintGCApplicationStoppedTime, -Xloggc:logs/gc.log, -XX:+UseGCLogFileRotation, -XX:NumberOfGCLogFiles=32, -XX:GCLogFileSize=64m, -Des.path.home=/home/ubuntu/elasticsearch-6.2.4, -Des.path.conf=/home/ubuntu/elasticsearch-6.2.4/config]
+[2018-06-03T19:00:37,125][INFO ][o.e.p.PluginsService     ] [eCQUrkO] loaded module [aggs-matrix-stats]
+[2018-06-03T19:00:37,126][INFO ][o.e.p.PluginsService     ] [eCQUrkO] loaded module [analysis-common]
+[2018-06-03T19:00:37,126][INFO ][o.e.p.PluginsService     ] [eCQUrkO] loaded module [ingest-common]
+[2018-06-03T19:00:37,127][INFO ][o.e.p.PluginsService     ] [eCQUrkO] loaded module [lang-expression]
+[2018-06-03T19:00:37,127][INFO ][o.e.p.PluginsService     ] [eCQUrkO] loaded module [lang-mustache]
+[2018-06-03T19:00:37,128][INFO ][o.e.p.PluginsService     ] [eCQUrkO] loaded module [lang-painless]
+[2018-06-03T19:00:37,128][INFO ][o.e.p.PluginsService     ] [eCQUrkO] loaded module [mapper-extras]
+[2018-06-03T19:00:37,128][INFO ][o.e.p.PluginsService     ] [eCQUrkO] loaded module [parent-join]
+[2018-06-03T19:00:37,128][INFO ][o.e.p.PluginsService     ] [eCQUrkO] loaded module [percolator]
+[2018-06-03T19:00:37,129][INFO ][o.e.p.PluginsService     ] [eCQUrkO] loaded module [rank-eval]
+[2018-06-03T19:00:37,129][INFO ][o.e.p.PluginsService     ] [eCQUrkO] loaded module [reindex]
+[2018-06-03T19:00:37,130][INFO ][o.e.p.PluginsService     ] [eCQUrkO] loaded module [repository-url]
+[2018-06-03T19:00:37,130][INFO ][o.e.p.PluginsService     ] [eCQUrkO] loaded module [transport-netty4]
+[2018-06-03T19:00:37,130][INFO ][o.e.p.PluginsService     ] [eCQUrkO] loaded module [tribe]
+[2018-06-03T19:00:37,131][INFO ][o.e.p.PluginsService     ] [eCQUrkO] no plugins loaded
+[2018-06-03T19:00:41,982][INFO ][o.e.d.DiscoveryModule    ] [eCQUrkO] using discovery type [zen]
+[2018-06-03T19:00:43,125][INFO ][o.e.n.Node               ] initialized
+[2018-06-03T19:00:43,125][INFO ][o.e.n.Node               ] [eCQUrkO] starting ...
+[2018-06-03T19:00:43,544][INFO ][o.e.t.TransportService   ] [eCQUrkO] publish_address {127.0.0.1:9300}, bound_addresses {[::1]:9300}, {127.0.0.1:9300}
+[2018-06-03T19:00:43,577][WARN ][o.e.b.BootstrapChecks    ] [eCQUrkO] max number of threads [3900] for user [ubuntu] is too low, increase to at least [4096]
+[2018-06-03T19:00:43,577][WARN ][o.e.b.BootstrapChecks    ] [eCQUrkO] max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]
+[2018-06-03T19:00:46,679][INFO ][o.e.c.s.MasterService    ] [eCQUrkO] zen-disco-elected-as-master ([0] nodes joined), reason: new_master {eCQUrkO}{eCQUrkOQRvSGO6KupUX0gA}{oBtibIZjTuGZR0FpswXS9g}{127.0.0.1}{127.0.0.1:9300}
+[2018-06-03T19:00:46,691][INFO ][o.e.c.s.ClusterApplierService] [eCQUrkO] new_master {eCQUrkO}{eCQUrkOQRvSGO6KupUX0gA}{oBtibIZjTuGZR0FpswXS9g}{127.0.0.1}{127.0.0.1:9300}, reason: apply cluster state (from master [master {eCQUrkO}{eCQUrkOQRvSGO6KupUX0gA}{oBtibIZjTuGZR0FpswXS9g}{127.0.0.1}{127.0.0.1:9300} committed version [1] source [zen-disco-elected-as-master ([0] nodes joined)]])
+[2018-06-03T19:00:46,738][INFO ][o.e.h.n.Netty4HttpServerTransport] [eCQUrkO] publish_address {127.0.0.1:9200}, bound_addresses {[::1]:9200}, {127.0.0.1:9200}
+[2018-06-03T19:00:46,738][INFO ][o.e.n.Node               ] [eCQUrkO] started
+[2018-06-03T19:00:46,968][INFO ][o.e.g.GatewayService     ] [eCQUrkO] recovered [1] indices into cluster_state
+[2018-06-03T19:00:47,412][INFO ][o.e.c.r.a.AllocationService] [eCQUrkO] Cluster health status changed from [RED] to [YELLOW] (reason: [shards started [[customer][2], [customer][4], [customer][1]] ...]).
+[2018-06-03T19:07:36,075][WARN ][o.e.t.TransportService   ] [eCQUrkO] Received response for a request that has timed out, sent [21030ms] ago, timed out [72ms] ago, action [cluster:monitor/nodes/stats[n]], node [{eCQUrkO}{eCQUrkOQRvSGO6KupUX0gA}{oBtibIZjTuGZR0FpswXS9g}{127.0.0.1}{127.0.0.1:9300}], id [40]
+[2018-06-03T19:07:36,126][DEBUG][o.e.a.a.c.n.s.TransportNodesStatsAction] [eCQUrkO] failed to execute on node [eCQUrkOQRvSGO6KupUX0gA]
+org.elasticsearch.transport.ReceiveTimeoutTransportException: [eCQUrkO][127.0.0.1:9300][cluster:monitor/nodes/stats[n]] request_id [40] timed out after [20958ms]
+	at org.elasticsearch.transport.TransportService$TimeoutHandler.run(TransportService.java:982) [elasticsearch-6.2.4.jar:6.2.4]
+	at org.elasticsearch.common.util.concurrent.ThreadContext$ContextPreservingRunnable.run(ThreadContext.java:573) [elasticsearch-6.2.4.jar:6.2.4]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_171]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_171]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_171]
+[2018-06-03T19:13:05,985][INFO ][o.e.n.Node               ] [eCQUrkO] stopping ...
+[2018-06-03T19:13:06,041][INFO ][o.e.n.Node               ] [eCQUrkO] stopped
+[2018-06-03T19:13:06,041][INFO ][o.e.n.Node               ] [eCQUrkO] closing ...
+[2018-06-03T19:13:06,058][INFO ][o.e.n.Node               ] [eCQUrkO] closed

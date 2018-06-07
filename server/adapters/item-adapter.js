@@ -2,10 +2,7 @@ var pool = require('./mysql-pool');
 
 var adapter = {};
 //select * from starbucks where 상품명 like "%(select mid((SELECT SUBSTRING(?,  (SELECT  INSTR(?, '아메')))),1,4))%"
-//var searchQuery =  'select 상품명,가격 from starbucks where 상품명 like "%?%"';
 var searchQuery = "select 상품명,가격 from starbucks where 상품명 like ?";
-//var searchQuery = 'select 상품명, 가격 from starbucks where 상품명 like "%Ame%"';
-//var searchQuery = 'select * from starbucks';
 
 adapter.search = function(itemName, cols, cb) {
     
@@ -40,6 +37,7 @@ console.log("resultCode in mySQL : " + resultCode);
 console.log("rows[0].상품명 : " + rows[0].상품명);
 
                     cb(resultCode, rows);
+		    return rows;
                 } 
             });
         }
