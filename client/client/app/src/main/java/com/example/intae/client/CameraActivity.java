@@ -126,6 +126,7 @@ public class CameraActivity extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 if(imageExist == true){
+                    Toast.makeText(getApplicationContext(), "사진 전송!", Toast.LENGTH_LONG).show();
                     Bitmap bitmap = ((BitmapDrawable) imgCapture.getDrawable()).getBitmap();
                     ByteArrayOutputStream baos = new ByteArrayOutputStream();
                     bitmap.compress(Bitmap.CompressFormat.JPEG,100, baos);

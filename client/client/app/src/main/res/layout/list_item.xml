@@ -22,9 +22,18 @@
         android:layout_height="40dp"
         android:textSize="12dp" />
 
-    <Button
+    <TextView
+        android:id="@+id/expense_id"
+        android:layout_width="100dp"
+        android:layout_height="40dp"/>
+    <ImageButton
         android:id="@+id/detailButton"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:text="상세" />
+        android:src="@drawable/see_detail" />
+    <ImageButton
+        android:id="@+id/listChangeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:src="@drawable/change_list" />
 </LinearLayout>

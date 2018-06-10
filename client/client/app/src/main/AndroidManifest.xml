@@ -43,9 +43,6 @@
         </provider>
 
         <activity
-            android:name=".MainActivity"
-            android:label="PICCOUNT" />
-        <activity
             android:name=".LoginActivity"
             android:label="로그인">
             <intent-filter>
@@ -64,6 +61,7 @@
         <activity
             android:name=".CameraActivity"
             android:hardwareAccelerated="false" />
+        <activity android:name=".ModificationAndDeleteActivity"></activity>
     </application>
 
 </manifest>

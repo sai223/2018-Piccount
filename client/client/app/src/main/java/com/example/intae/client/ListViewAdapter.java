@@ -1,11 +1,13 @@
 package com.example.intae.client;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,15 +40,26 @@ public class ListViewAdapter extends BaseAdapter {
         TextView date = (TextView) convertView.findViewById(R.id.date);
         TextView storeName= (TextView) convertView.findViewById(R.id.storeName) ;
         TextView expenseAmount = (TextView) convertView.findViewById(R.id.expenseAmount);
-        Button detailButton = (Button) convertView.findViewById(R.id.detailButton);
+        TextView expenseID = (TextView)convertView.findViewById(R.id.expense_id);
+        ImageButton detailButton = (ImageButton) convertView.findViewById(R.id.detailButton);
+        ImageButton modificationButton = (ImageButton)convertView.findViewById(R.id.listChangeButton);
 
-        ListViewItem listViewItem = listViewItems.get(position);
+        expenseID.setVisibility(View.GONE);
+        final ListViewItem listViewItem = listViewItems.get(position);
 
         // 아이템 내 각 위젯에 데이터 반영
         date.setText(listViewItem.getDate());
         storeName.setText(listViewItem.getStoreName());
         expenseAmount.setText(listViewItem.getExpenseAmount());
 
+        detailButton.setOnClickListener(new View.OnClickListener() {
+                                            public void onClick(View v) {
+                                            }
+                                        });
+        modificationButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+            }
+        });
         return convertView;
     }
 
