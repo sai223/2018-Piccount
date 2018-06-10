@@ -4,7 +4,7 @@ var router = express.Router();
 var elasticsearch = require('elasticsearch');
 var async = require('async');
 var exec = require('child-process').exec, child;
-const vase64 = require('base-64');
+const base64 = require('base-64');
 const fs = require('fs');
 
 var fileName = '';
@@ -51,8 +51,8 @@ function starbucks(arr, cb) {
                     }
                 }
                 else if (arr[i].indexOf('G)') != -1 || arr[i].indexOf('샌드') != -1 || arr[i].indexOf('SW') != -1 || arr[i].indexOf('F') != -1 || arr[i].indexOf('-T)') != -1) {
-
-                    item_ko.push(arr[i].replace(/[a-z0-9]|[ \[\]{}()<>?|`~!@#$%^&*-_+=,.;:\"'\\]/g, ""));
+                    //item_ko.push(arr[i].replace(/[a-z0-9]|[ \[\]{}()<>?|`~!@#$%^&*-_+=,.;:\"'\\]/g, ""));
+                    item_ko.push(arr[i]);
                 }
             }
             for (a = 0; a < item_ko.length; a++) {
@@ -67,13 +67,13 @@ function starbucks(arr, cb) {
                         }
                     }
                 }).then(function (resp) {
-                    console.log('start!!')
+                    //console.log('start!!')
                     if (resp.hits.hits[0] != null) {
                         var hits = resp.hits.hits[0]._source;
                         item_.push({ "item": hits.item_name, "price": hits.price });
                         price.push(hits.price);
                         if (item_ko.length == item_.length) {
-                            console.log('info:', item_);
+                            //console.log('info:', item_);
                             callback(shopName, category, date, item_, price);
                         }
                     }
@@ -89,8 +89,8 @@ function starbucks(arr, cb) {
             }
         }
     ], function (shopName, category, date, item_, price) {
-        console.log('get item_', item_);
-        console.log('get price:', price);
+        //console.log('get item_', item_);
+        //console.log('get price:', price);
         for (n = 0; n < price.length; n++) {
             totalPrice += price[n];
         }
@@ -120,7 +120,8 @@ function gs25(arr, cb) {
                             date = data[j];
                 }
                 else if (arr[i].indexOf('데자') != -1 || arr[i].indexOf('바나나') != -1 || arr[i].indexOf('샘물') != -1) {
-                    item_ko.push(arr[i].replace(/[a-z0-9]|[ \[\]{}()<>?|`~!@#$%^&*-_+=,.;:\"'\\]/g, ""));
+                    //item_ko.push(arr[i].replace(/[a-z0-9]|[ \[\]{}()<>?|`~!@#$%^&*-_+=,.;:\"'\\]/g, ""));
+                    item_ko.push(arr[i]);
                 }
             }
             for (b = 0; b < item_ko.length; b++) {
@@ -135,13 +136,13 @@ function gs25(arr, cb) {
                         }
                     }
                 }).then(function (resp) {
-                    console.log('start!!')
+                    //console.log('start!!')
                     if (resp.hits.hits[0] != null) {
                         var hits = resp.hits.hits[0]._source;
                         item_.push({ "item": hits.item_name, "price": hits.price });
                         price.push(hits.price);
                         if (item_ko.length == item_.length) {
-                            console.log('info:', item_);
+                            //console.log('info:', item_);
                             callback(shopName, category, date, item_, price);
                         }
                     }
@@ -156,8 +157,8 @@ function gs25(arr, cb) {
             }
         }
     ], function (shopName, category, date, item_, price) {
-        console.log('get item_', item_);
-        console.log('get price:', price);
+        //console.log('get item_', item_);
+        //console.log('get price:', price);
         for (n = 0; n < price.length; n++) {
             totalPrice += price[n];
         }
@@ -179,12 +180,11 @@ function normal(arr, cb) {
 
             if (arr[0].indexOf)
                 s = arr[0].split('"');
-            sh = s[1];
-            shop = sh.split(/(\s+)/);
-            shopName = shop[0];
+            shopName = s[1];
+            //shopName = shop[0];
 
             for (i = 0; i < arr.length; i++) {
-                if (arr[i].indexOf('이마트') != -1 || arr[i].indexOf('emar') != -1 || arr[i].indexOf('homeplu') != -1) {
+                if (arr[i].indexOf('이마트') != -1 || arr[i].indexOf('emar') != -1 || arr[i].indexOf('홈플')!= -1|| arr[i].indexOf('home') != -1 || arr[i].indexOf('plus') != -1) {
                     category = '대형마트';
                 }
                 else if (arr[i].indexOf('201') != -1) {
@@ -205,14 +205,14 @@ function normal(arr, cb) {
                     item_num = i;
                 }
             }
-            console.log('item_index:', item_index);
-            console.log('item_num', item_num);
+            //console.log('item_index:', item_index);
+            //console.log('item_num', item_num);
             for (k = item_index + 1; k < item_num; k++) {
-                han = arr[k].replace(/[a-z0-9]|[ \[\]{}()<>?|`~!@#$%^&*-_+=,.;:\"'\\]/g, "");
-                console.log('han:', han);
-                if (han != '')
-                    item_ko.push(han);
-                console.log('item_ko:', item_ko);
+                //han = arr[k].replace(/[a-z0-9]|[ \[\]{}()<>?|`~!@#$%^&*-_+=,.;:\"'\\]/g, "");
+                //console.log('han:', han);
+                if (arr[k].replace(/[a-z0-9]|[ \[\]{}()<>?|`~!@#$%^&*-_+=,.;:\"'\\]/g, "") != '')
+                    item_ko.push(arr[k]);
+                //console.log('item_ko:', item_ko);
             }
             for (b = 0; b < item_ko.length; b++) {
                 client1.search({
@@ -226,13 +226,13 @@ function normal(arr, cb) {
                         }
                     }
                 }).then(function (resp) {
-                    console.log('start!!')
+                    //console.log('start!!')
                     if (resp.hits.hits[0] != null) {
                         var hits = resp.hits.hits[0]._source;
                         item_.push({ "item": hits.item_name, "price": hits.price });
                         price.push(hits.price);
                         if (item_ko.length == item_.length) {
-                            console.log('info:', item_);
+                            //console.log('info:', item_);
                             callback(shopName, category, date, item_, price);
                         }
                     }
@@ -247,8 +247,8 @@ function normal(arr, cb) {
             }
         }
     ], function (shopName, category, date, item_, price) {
-        console.log('get item_', item_);
-        console.log('get price:', price);
+        //console.log('get item_', item_);
+        //console.log('get price:', price);
         for (n = 0; n < price.length; n++) {
             totalPrice += price[n];
         }
@@ -261,24 +261,24 @@ function split(info, cb) {
     data = JSON.stringify(d); //object to string
     arr = new Array();
     arr = data.split('\\n');
-    console.log(arr);
+    //console.log(arr);
     result = null;
     if (arr[0].indexOf('STARBUCKS') != -1) {
-        console.log('starbucks!');
+        //console.log('starbucks!');
         starbucks(arr, function (res) {
             result = res;
-            console.log('result:', result);
+            //console.log('result:', result);
             shopName = result.shop;
             category = result.category;
             date = result.date;
             info = result.info;
             //price = result.price;
             totalPrice = result.totalPrice;
-            cb({ success: true, shop: shopName, category: category, date: date, info: info, totalPrice: totalPrice });
+            cb({ success: true, shop: shopName, category: category, date: date, info: info, totalPrice: totalPrice,arr:arr });
         });
     }
     else if (arr[0].indexOf('GS25') != -1 || arr[0].indexOf('가까운') != -1) {
-        console.log('gs25!');
+        //console.log('gs25!');
         gs25(arr, function (res) {
             result = res;
             shopName = result.shop;
@@ -286,22 +286,22 @@ function split(info, cb) {
             date = result.date;
             info = result.info;
             totalPrice = result.totalPrice;
-            console.log('res', res);
-            cb({ success: true, shop: shopName, category: category, date: date, info: info, totalPrice: totalPrice });
+            //console.log('res', res);
+            //cb({ success: true, shop: shopName, category: category, date: date, info: info, totalPrice: totalPrice });
+            cb({ success: true, shop: shopName, category: category, date: date, info: info, totalPrice: totalPrice, arr:arr });
         });
     }
     else {
         console.log('일반 상호');
         normal(arr, function (res) {
             result = res;
-            console.log('result:', result);
+            //console.log('result:', result);
             shopName = result.shop;
             category = result.category;
             date = result.date;
             info = result.info;
-            //price = result.price;
             totalPrice = result.totalPrice;
-            cb({ success: true, shop: shopName, category: category, date: date, info: info, totalPrice: totalPrice });
+            cb({ success: true, shop: shopName, category: category, date: date, info: info, totalPrice: totalPrice, arr:arr });
         });
     }
 }
@@ -312,6 +312,7 @@ router.post('/', function (req, res, next) {
         return res.json({ success: false });
     }
     else {
+        
         fileName = req.body.fileName;
         file_path = '/home/ubuntu/server/receipts/';
         var decodedData = base64.decode(req.body.imgFile);
@@ -319,9 +320,11 @@ router.post('/', function (req, res, next) {
         fs.writeFile(file_path, decodedData, "binary", (err) => {
             if (err) throw err;
         });
+        
     }
     client
-        .textDetection(req.body.imgFile)
+        //.textDetection(req.body.imgFile)
+        .textDetection(file_path)
         .then(results => {
             const detections = results[0].textAnnotations;
             if (detections[0] == null)
@@ -330,15 +333,19 @@ router.post('/', function (req, res, next) {
                 info = detections[0];
                 //console.log('part1',info);
                 split(info, function (a) {
-                    return res.json(a);
+                    console.log(a.arr);
+                    return res.json({success:a.success,shop:a.shop,category:a.category,date:a.date,info:a.info,totalPrice:a.totalPrice});
                 });
                 //return res.json(a);
             }
+            /*
             child = exec('rm /home/ubuntu/server/receipts/*', function (err, stdout, stderr) {
                 if (err !== null) {
                     console.log('exec error: ' + err);
                 }
             });
+            */
+            
         })
         .catch(err => {
             console.error('ERROR:', err);
