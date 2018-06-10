@@ -1,0 +1,169 @@
+[ '"가까운 행복을 만나다 GS25',
+  'GS25아주대 점',
+  '현미',
+  '경기 수원시 영통구 아주로 46',
+  '2018/06/03 박*수',
+  '031-212-0025',
+  '1243653758',
+  'NO: 29709',
+  '*정부방침에 의해 교환/환불은',
+  '반드시염수증을지참하셔야.하며,',
+  '카드결제는 30일(07 03일)。',
+  '카드와 염수즘 지참 시 가능합니다',
+  '내',
+  '데자와밀크티캔',
+  '1 300',
+  '합계수량/금액',
+  '1',
+  '1,300',
+  '과세 매출',
+  '부가세',
+  '합',
+  '신용 카드',
+  '1, 182',
+  '118',
+  '계',
+  '1, 300',
+  '1, 300',
+  '카드번호',
+  '사용금액',
+  '신용카드 전표(고객용)',
+  '5361-25**-',
+  '-9308',
+  '1.300원',
+  '발인버부',
+  '78(01 입사 : 삼성카드)',
+  '승인번호 78991722.',
+  '18/06/03 23:53:15-xx',
+  '"' ]
+gs25!
+[35m[1mElasticsearch DEBUG[22m[39m: 2018-06-10T07:53:41Z
+  starting request {
+    "method": "POST",
+    "path": "/gs/external/_search",
+    "body": {
+      "query": {
+        "match": {
+          "item_name": {
+            "query": "데자와밀크티캔",
+            "fuzziness": "AUTO"
+          }
+        }
+      }
+    },
+    "query": {}
+  }
+  
+
+[37m[1mElasticsearch TRACE[22m[39m: 2018-06-10T07:53:42Z
+  -> POST http://52.14.15.140:9200/gs/external/_search
+  {
+    "query": {
+      "match": {
+        "item_name": {
+          "query": "데자와밀크티캔",
+          "fuzziness": "AUTO"
+        }
+      }
+    }
+  }
+  <- 200
+  {
+    "took": 11,
+    "timed_out": false,
+    "_shards": {
+      "total": 5,
+      "successful": 5,
+      "failed": 0
+    },
+    "hits": {
+      "total": 1,
+      "max_score": 0.30685282,
+      "hits": [
+        {
+          "_index": "gs",
+          "_type": "external",
+          "_id": "AWPobORkRa2GpSbnkTHF",
+          "_score": 0.30685282,
+          "_source": {
+            "item_name": "데자와밀크티캔",
+            "price": 1300
+          }
+        }
+      ]
+    }
+  }
+
+[35m[1mElasticsearch DEBUG[22m[39m: 2018-06-10T07:53:42Z
+  Request complete
+
+start!!
+info: [ { item: '데자와밀크티캔', price: 1300 } ]
+get item_ [ { item: '데자와밀크티캔', price: 1300 } ]
+get price: [ 1300 ]
+res { success: true,
+  shop: '가까운 행복을 만나다 GS25',
+  category: '소매',
+  date: '2018/06/03',
+  info: [ { item: '데자와밀크티캔', price: 1300 } ],
+  totalPrice: 1300 }
+[35m[1mElasticsearch DEBUG[22m[39m: 2018-06-10T08:01:56Z
+  starting request {
+    "method": "POST",
+    "path": "/gs/external/_search",
+    "body": {
+      "query": {
+        "match": {
+          "item_name": {
+            "query": "데자와밀크티캔",
+            "fuzziness": "AUTO"
+          }
+        }
+      }
+    },
+    "query": {}
+  }
+  
+
+[37m[1mElasticsearch TRACE[22m[39m: 2018-06-10T08:01:57Z
+  -> POST http://52.14.15.140:9200/gs/external/_search
+  {
+    "query": {
+      "match": {
+        "item_name": {
+          "query": "데자와밀크티캔",
+          "fuzziness": "AUTO"
+        }
+      }
+    }
+  }
+  <- 200
+  {
+    "took": 12,
+    "timed_out": false,
+    "_shards": {
+      "total": 5,
+      "successful": 5,
+      "failed": 0
+    },
+    "hits": {
+      "total": 1,
+      "max_score": 0.30685282,
+      "hits": [
+        {
+          "_index": "gs",
+          "_type": "external",
+          "_id": "AWPobORkRa2GpSbnkTHF",
+          "_score": 0.30685282,
+          "_source": {
+            "item_name": "데자와밀크티캔",
+            "price": 1300
+          }
+        }
+      ]
+    }
+  }
+
+[35m[1mElasticsearch DEBUG[22m[39m: 2018-06-10T08:01:57Z
+  Request complete
+
